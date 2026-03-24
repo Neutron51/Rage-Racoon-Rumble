@@ -3,10 +3,13 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private EnemyData enemyData;
+
     public NavMeshAgent agent;
     public Transform Player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public float health;
+    public int health;
+    public float speed;
 
     [Header("Patrolling")]
     public Vector3 walkPoint;
@@ -14,7 +17,7 @@ public class EnemyController : MonoBehaviour
     public float walkPointRange;
 
     [Header("Attacking")]
-    public float TimeBetweenAttacks;
+    public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
 
@@ -23,8 +26,20 @@ public class EnemyController : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     private void Awake() {
-        Player = GameObject.Find("PlayerObj").transform;
+        Player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        // Load values from EnemyData
+        if (enemyData != null) {
+            agent.speed = enemyData.speed;
+            health = enemyData.health;
+            sightRange = enemyData.sightRange;
+            attackRange = enemyData.attackRange;
+            timeBetweenAttacks = enemyData.timeBetweenAttacks;
+
+            walkPointRange = enemyData.walkPointRange;
+            projectile = enemyData.projectilePrefab;
+        }
     }
 
     private void Update() {
@@ -33,8 +48,8 @@ public class EnemyController : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInAttackRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AattackPlayer();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
     private void Patroling() {
         if (!walkPointSet) SearchWalkPoint();
@@ -64,7 +79,7 @@ public class EnemyController : MonoBehaviour
         agent.SetDestination(Player.position);
     }
 
-    private void AattackPlayer() {
+    private void AttackPlayer() {
         // Make sure enemy doesn;t move
         agent.SetDestination(transform.position);
 
@@ -72,13 +87,13 @@ public class EnemyController : MonoBehaviour
 
         if (!alreadyAttacked) {
             // Attack Code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            // Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
 
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            /* rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse); */
 
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), TimeBetweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 

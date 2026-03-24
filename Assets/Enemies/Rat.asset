@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c29cbd1cdf2f54cb5a980a4be0e9a9, type: 3}
+  m_Name: Rat
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  speed: 2000
+  walkPointRange: 20
+  sightRange: 20
+  attackRange: 1
+  health: 15
+  damageDealt: 4
+  timeBetweenAttacks: 2
+  projectilePrefab: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
