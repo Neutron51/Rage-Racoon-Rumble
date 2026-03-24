@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
     public Transform Player;
     public LayerMask whatIsGround, whatIsPlayer;
+    public float health;
 
     [Header("Patrolling")]
     public Vector3 walkPoint;
@@ -15,6 +16,7 @@ public class EnemyController : MonoBehaviour
     [Header("Attacking")]
     public float TimeBetweenAttacks;
     bool alreadyAttacked;
+    public GameObject projectile;
 
     [Header("States")]
     public float sightRange, attackRange;
@@ -67,9 +69,38 @@ public class EnemyController : MonoBehaviour
         agent.SetDestination(transform.position);
 
         transform.LookAt(Player);
+
+        if (!alreadyAttacked) {
+            // Attack Code here
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), TimeBetweenAttacks);
+        }
     }
 
     private void ResetAttack() {
         // left at https://youtu.be/UjkSFoLxesw?t=220
+        alreadyAttacked = false;
+    }
+
+    public void TakenDamage(int damage) {
+        health -= damage;
+
+        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+    }
+
+    private void DestroyEnemy() {
+        Destroy(gameObject);
+    }
+
+    private void OnizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }
