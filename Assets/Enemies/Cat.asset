@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c29cbd1cdf2f54cb5a980a4be0e9a9, type: 3}
   m_Name: Cat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  speed: 50
+  speed: 2000
   walkPointRange: 20
   sightRange: 40
-  attackRange: 10
-  health: 100
+  attackRange: 2
+  health: 45
   damageDealt: 10
   timeBetweenAttacks: 2
   projectilePrefab: {fileID: 0}

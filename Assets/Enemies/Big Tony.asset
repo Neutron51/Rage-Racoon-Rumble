@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c29cbd1cdf2f54cb5a980a4be0e9a9, type: 3}
-  m_Name: Rat
+  m_Name: Big Tony
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  speed: 1500
+  speed: 2000
   walkPointRange: 20
-  sightRange: 20
-  attackRange: 2
-  health: 15
-  damageDealt: 4
+  sightRange: 50
+  attackRange: 5
+  health: 100
+  damageDealt: 10
   timeBetweenAttacks: 2
-  projectilePrefab: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+  projectilePrefab: {fileID: 0}
