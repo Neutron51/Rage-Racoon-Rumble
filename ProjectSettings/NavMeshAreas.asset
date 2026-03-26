@@ -11,13 +11,13 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
+  - name: Rat
     cost: 1
-  - name: 
+  - name: Cat
     cost: 1
-  - name: 
+  - name: Pitbull
     cost: 1
-  - name: 
+  - name: Big Tony
     cost: 1
   - name: 
     cost: 1
@@ -94,7 +94,7 @@ NavMeshProjectSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.75
+    agentClimb: 0.2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -110,9 +110,9 @@ NavMeshProjectSettings:
   - serializedVersion: 3
     agentTypeID: -334000983
     agentRadius: 0.5
-    agentHeight: 2
+    agentHeight: 0.25
     agentSlope: 45
-    agentClimb: 0.75
+    agentClimb: 0.1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -128,9 +128,9 @@ NavMeshProjectSettings:
   - serializedVersion: 3
     agentTypeID: 1479372276
     agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.75
+    agentHeight: 0.5
+    agentSlope: 54.5
+    agentClimb: 0.1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -148,7 +148,7 @@ NavMeshProjectSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.15
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -166,4 +166,4 @@ NavMeshProjectSettings:
   - Rat
   - Cat
   - Pitbull
-  - ' Big Tony'
+  - Big Tony
