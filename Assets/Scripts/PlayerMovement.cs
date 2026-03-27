@@ -5,8 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    /*[SerializeField] private Transform cameraTransform;
+    [SerializeField] private bool shouldFaceMoveDirection = false;
+    [SerializeField] private float speed = 5f;*/
+
     [Header("Movement")]
     public float moveSpeed;
+    
 
     public float groundDrag;
 
@@ -15,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
 
+    private CharacterController controller;
+    private Vector2 moveInput;
 
     public Transform orientation;
 
@@ -33,6 +40,24 @@ public class PlayerMovement : MonoBehaviour
     [System.Obsolete]
     private void Update()
     {
+        /*Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize(); 
+        right.Normalize();
+
+        Vector3 moveDirection = forward * moveInput.y + right * moveInput.x;
+        controller.Move(moveDirection * speed * Time.deltaTime);
+
+        if(shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+        }*/
+
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
