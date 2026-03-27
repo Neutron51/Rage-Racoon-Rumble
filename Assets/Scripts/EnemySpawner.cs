@@ -3,18 +3,46 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject swarmerPrefab;
+    public enum SpawnShape {
+        Circle,
+        Box
+    }
+    public int spawnRadius = 0;
 
-    [SerializeField]
-    private float swarmerInterval = 3.5f;
+    #region NavMesh Spawner
 
+    public SpawnShape spawnShape = SpawnShape.Circle;
+    public Vector2 boxSize = new Vector2(0, 0);
+    public Vector3 spawningOffset = new Vector3(0, 0, 0);
+    
     public int xPos = 50;
     public int zPos = 50;
+    #endregion
+
+    [SerializeField]
+    private GameObject swarmerPrefab;
+    [SerializeField]
+    private float swarmerInterval = 3.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         StartCoroutine(spawnEnemy(swarmerInterval, swarmerPrefab));
+    }
+
+    public void OnGizmosSelected() {
+        Gizmos.color = Color.yellow;
+        switch(spawnShape) {
+            case SpawnShape.Circle:
+                 Gizmos.DrawWireSphere(transform.position, spawnRadius);
+                 break;
+            case SpawnShape.Box:
+                Vector3 size = new Vector3(boxSize.x, 0, boxSize.y);
+                Gizmos.DrawWireCube(transform.position, size);
+                break;
+            default:
+                break;
+            
+        }
     }
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy) {
