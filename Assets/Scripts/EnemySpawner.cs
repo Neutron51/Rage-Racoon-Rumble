@@ -1,57 +1,82 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour {
+    public Transform Player;
+    public int NumberOfEnemiesToSpawn = 6;
+    public float SpawnDelay = 1f;
+    public List<Enemy> EnemyPrefabs = new List<Enemy>();
+    public SpawnMethod EnemySpawnMethod = SpawnMethod.RoundRobin; // Dictate the method they will spawn
 
-    public enum SpawnShape {
-        Circle,
-        Box
-    }
-    public int spawnRadius = 0;
+    private Dictionary<int, ObjectPool> EnemyObjectPools = new Dictionary<int, ObjectPool>();
 
-    #region NavMesh Spawner
-
-    public SpawnShape spawnShape = SpawnShape.Circle;
-    public Vector2 boxSize = new Vector2(0, 0);
-    public Vector3 spawningOffset = new Vector3(0, 0, 0);
-    
-    public int xPos = 50;
-    public int zPos = 50;
-    #endregion
-
-    [SerializeField]
-    private GameObject swarmerPrefab;
-    [SerializeField]
-    private float swarmerInterval = 3.5f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() {
-        StartCoroutine(spawnEnemy(swarmerInterval, swarmerPrefab));
-    }
-
-    public void OnGizmosSelected() {
-        Gizmos.color = Color.yellow;
-        switch(spawnShape) {
-            case SpawnShape.Circle:
-                 Gizmos.DrawWireSphere(transform.position, spawnRadius);
-                 break;
-            case SpawnShape.Box:
-                Vector3 size = new Vector3(boxSize.x, 0, boxSize.y);
-                Gizmos.DrawWireCube(transform.position, size);
-                break;
-            default:
-                break;
-            
+    public void Awake() {
+        for (int i = 0; i < EnemyPrefabs.Count; i++) {
+            EnemyObjectPools.Add(i, ObjectPool.CreateInstance(EnemyPrefabs[i], NumberOfEnemiesToSpawn));
         }
     }
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy) {
-        xPos = Random.Range(-16, 13);
-        zPos = Random.Range(-20, 1);
-        Instantiate(swarmerPrefab, new Vector3 (xPos, 1, zPos), Quaternion.identity);
-        yield return new WaitForSeconds(interval); // wait for the end of interval
-        GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5f), Random.Range(-6f, 6f), 0), Quaternion.identity);
-        // define newEnemy
-        StartCoroutine(spawnEnemy(interval, enemy));
+    private void Start() {
+        StartCoroutine(SpawnEnemy()); // Coroiutine to spawn enemies
+    }
+
+    private IEnumerator SpawnEnemy() {
+        WaitForSeconds Wait = new WaitForSeconds(SpawnDelay); // Wait for SpawnDelay
+
+        int SpawnedEnemies = 0;
+
+        while (SpawnedEnemies < NumberOfEnemiesToSpawn) {
+            if (EnemySpawnMethod == SpawnMethod.RoundRobin) {
+                SpawnRoundRobinEnemy(SpawnedEnemies);
+            }
+            else if (EnemySpawnMethod == SpawnMethod.Random) {
+                SpawnRandomEnemy();
+            }
+
+            SpawnedEnemies++;
+
+            yield return Wait;
+        }
+    }
+
+    private void SpawnRoundRobinEnemy(int SpawnedEnemies) {
+        int SpawnIndex = SpawnedEnemies % EnemyPrefabs.Count; // 0 % 2 = 0 %
+
+        DoSpawnEnemy(SpawnIndex);
+    }
+
+    private void SpawnRandomEnemy() {
+        DoSpawnEnemy(Random.Range(0, EnemyPrefabs.Count));
+    }
+
+    private void DoSpawnEnemy(int spawnIndex) {
+        PoolableObject poolableObject = EnemyObjectPools[spawnIndex].GetObject();
+
+        if (poolableObject != null) {
+            Enemy enemy = poolableObject.GetComponent<Enemy>();
+
+            NavMeshTriangulation Triangulation = NavMesh.CalculateTriangulation();
+
+            int vertexIndex = Random.Range(0, Triangulation.vertices.Length);
+
+            NavMeshHit Hit;
+            if (NavMesh.SamplePosition(Triangulation.vertices[vertexIndex], out Hit, 2f, 0)) {
+                enemy.Agent.Wrap(Hit.position);
+                // enemy needs to get enabled and start chasing now.
+                enemy.Movement.Player = Player;
+                enemy.Agent.enabled = true;
+            }
+        }
+        else {
+            Debug.LogError($"Unable to getch enemies of type {spawnIndex} from object pool. Out of object?");
+        }
+    }
+
+    public enum SpawnMethod {
+        RoundRobin,
+        Random
     }
 }

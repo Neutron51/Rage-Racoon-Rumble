@@ -285,10 +285,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  swarmerPrefab: {fileID: 1267155950455855994, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
-  swarmerInterval: 0.5
+  spawnRadius: 0
+  spawnShape: 0
+  boxSize: {x: 0, y: 0}
+  spawningOffset: {x: 0, y: 0, z: 0}
+  navMeshSurface: {fileID: 0}
   xPos: 0
   zPos: 0
+  swarmerPrefab: {fileID: 1267155950455855994, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
+  swarmerInterval: 0.5
 --- !u!4 &363128441
 Transform:
   m_ObjectHideFlags: 0
@@ -529,10 +534,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  swarmerPrefab: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
-  swarmerInterval: 0.5
+  spawnRadius: 0
+  spawnShape: 0
+  boxSize: {x: 0, y: 0}
+  spawningOffset: {x: 0, y: 0, z: 0}
+  navMeshSurface: {fileID: 0}
   xPos: 0
   zPos: 0
+  swarmerPrefab: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+  swarmerInterval: 0.5
 --- !u!4 &582916252
 Transform:
   m_ObjectHideFlags: 0
@@ -597,6 +607,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &922306732
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+      propertyPath: m_Name
+      value: RAT
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
 --- !u!1 &1053666131
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +823,7 @@ GameObject:
   - component: {fileID: 1235054564}
   - component: {fileID: 1235054563}
   - component: {fileID: 1235054567}
+  - component: {fileID: 1235054568}
   m_Layer: 7
   m_Name: RatArea
   m_TagString: Untagged
@@ -889,6 +957,27 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 5c1d7bb3699e0450baf933dc5e2eb2e5, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1235054568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235054562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  spawnRadius: 477
+  spawnShape: 0
+  boxSize: {x: 0, y: 0}
+  spawningOffset: {x: 0, y: 0, z: 0}
+  navMeshSurface: {fileID: 1235054567}
+  xPos: 50
+  zPos: 50
+  swarmerPrefab: {fileID: 0}
+  swarmerInterval: 3.5
 --- !u!1 &1313020891
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,10 +1007,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  swarmerPrefab: {fileID: 1962586530}
-  swarmerInterval: 0.5
+  spawnRadius: 0
+  spawnShape: 0
+  boxSize: {x: 0, y: 0}
+  spawningOffset: {x: 0, y: 0, z: 0}
+  navMeshSurface: {fileID: 0}
   xPos: 0
   zPos: 0
+  swarmerPrefab: {fileID: 1962586530}
+  swarmerInterval: 0.5
 --- !u!4 &1313020893
 Transform:
   m_ObjectHideFlags: 0
@@ -1482,6 +1576,7 @@ SceneRoots:
   - {fileID: 1828594213}
   - {fileID: 1908530664}
   - {fileID: 1795188647}
+  - {fileID: 922306732}
   - {fileID: 1695609175}
   - {fileID: 380131503}
   - {fileID: 1827137631}
