@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010562463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27e9ccfec7b2b439d860a4d3a98e299f, type: 3}
   m_Name: 
@@ -1393,9 +1393,15 @@ MonoBehaviour:
   groundDrag: 10
   playerHeight: 1
   whatIsGround:
-    serializedVersion: 2
     m_Bits: 1024
+  grounded: 0
+  controller: {fileID: 0}
+  moveInput: {x: 0, y: 0}
   orientation: {fileID: 2027748896}
+  horizontalInput: 0
+  verticalinput: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!136 &2010562467
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1571,7 +1577,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010562463}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0a71f8d4545c4886a96fc370bdf1fcc, type: 3}
   m_Name: 
