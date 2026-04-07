@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;
 
-    public NavMeshAgent agent;
+    public NavMeshAgent agent; 
     public Transform Player;
     public LayerMask whatIsGround, whatIsPlayer;
     public int health;
@@ -25,8 +25,6 @@ public class EnemyController : MonoBehaviour {
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    public Coroutine FollowCoroutine;
-
     private void Awake() {
         Player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -44,14 +42,6 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void StartChasing() {
-        if (FollowCoroutine == null) {
-            FollowCoroutine = StartCoroutine(ChasePlayer());
-        }
-        else {
-            Debug.LogWarning("Calling StartChasing on Enemy that is already chasin'! This is likely a bug in some calling class!");
-        }
-    }
     private void Update() {
         // Check for sign and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -85,8 +75,7 @@ public class EnemyController : MonoBehaviour {
             walkPointSet = true;
     }
 
-    private IEnumerator ChasePlayer() {
-        yield return new WaitForSeconds(0.001f);
+    private void ChasePlayer() {
         agent.SetDestination(Player.position);
     }
 
