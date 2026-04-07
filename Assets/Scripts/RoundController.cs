@@ -29,6 +29,7 @@ public class RoundController : MonoBehaviour {
         }
 
         spawnRate -= 0.1f;
+        enemyCount += 5;
 
         yield return new WaitForSeconds(timeBetweenWaves);
     }
