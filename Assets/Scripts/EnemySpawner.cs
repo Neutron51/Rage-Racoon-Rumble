@@ -12,11 +12,21 @@ public class EnemySpawner : MonoBehaviour {
     public List<EnemyController> EnemyPrefabs = new List<EnemyController>();
     public SpawnMethod EnemySpawnMethod = SpawnMethod.RoundRobin; // Dictate the method they will spawn
 
-    private Dictionary<int, ObjectPool<EnemySpawner>> EnemyObjectPools = new Dictionary<int, ObjectPool<EnemySpawner>>();
+    private Dictionary<int, ObjectPool<EnemyController>> EnemyObjectPools = new Dictionary<int, ObjectPool<EnemyController>>();
 
     public void Awake() {
         for (int i = 0; i < EnemyPrefabs.Count; i++) {
-            EnemyObjectPools.Add(i, ObjectPool<EnemySpawner>.CreateInstance(EnemyPrefabs[i], NumberOfEnemiesToSpawn));
+            int index = i;
+
+            EnemyObjectPools.Add(index, new ObjectPool<EnemyController>(
+                () => Instantiate(EnemyPrefabs[index]), // create
+                enemy => enemy.gameObject.SetActive(true), // on get
+                enemy => enemy.gameObject.SetActive(false), // on release
+                enemy => Destroy(enemy.gameObject), // on destroy
+                false,
+                NumberOfEnemiesToSpawn,
+                NumberOfEnemiesToSpawn
+            ));
         }
     }
 
@@ -54,25 +64,20 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void DoSpawnEnemy(int spawnIndex) {
-        PoolableObject poolableObject = EnemyObjectPools[spawnIndex].GetObject();
+        EnemyController enemy = EnemyObjectPools[spawnIndex].Get();
 
-        if (poolableObject != null) {
-            EnemyController enemy = poolableObject.GetComponent<EnemyController>();
-
+        if (enemy != null) {
             // Get a random point of the NavMesh
             NavMeshTriangulation Triangulation = NavMesh.CalculateTriangulation();
             int vertexIndex = Random.Range(0, Triangulation.vertices.Length);
-            Vector2 randomPoint = Triangulation.vertices[vertexIndex];
+            Vector3 randomPoint = Triangulation.vertices[vertexIndex];
 
             NavMeshHit Hit;
             if (NavMesh.SamplePosition(randomPoint, out Hit, 5f, NavMesh.AllAreas)) {
                 // Disable the agent before wrapping for stability
                 enemy.agent.enabled = false;
                 enemy.transform.position = Hit.position;
-                enemy.Agent.enabled = true;
-
-                // 3. Initialize the enemy state
-                enemy.Initialize(Player);
+                enemy.agent.enabled = true;
             }
         }
         else {
