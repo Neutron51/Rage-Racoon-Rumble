@@ -6,6 +6,8 @@ public class Playershooting : MonoBehaviour
     public GameObject Fire;
     public GameObject HitPoint;
 
+    public RPGFiring rpg;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -13,6 +15,16 @@ public class Playershooting : MonoBehaviour
             Shooting();
             Debug.Log("Shoot!");
         }
+
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            
+            //rpg.IsFiring = true;
+        }
+        
+
+        /*if(Input.GetKeyUp(KeyCode.Mouse0))
+        rpg.IsFiring = false;*/
     }
 
     void Shooting()
