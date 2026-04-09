@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+public class Missiles : MonoBehaviour
 {
     public float speed;
 
@@ -14,5 +14,11 @@ public class Missile : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Destroy(gameObject);
+        Debug.Log("Missile Destroy!!");
     }
 }

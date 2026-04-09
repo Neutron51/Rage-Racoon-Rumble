@@ -258,9 +258,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RPGFiring
   IsFiring: 0
   bullet: {fileID: -6179422194471400637, guid: 3ce1d149cba694300a0136434dcaaf15, type: 3}
-  missileSpeed: 10
+  missileSpeed: 40
   timeBetweenShots: 1
   firePoint: {fileID: 2141173649}
+  rpg: {fileID: 44650334}
 --- !u!65 &44650335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1055,7 +1056,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &638498577
@@ -1593,7 +1594,7 @@ Transform:
   m_GameObject: {fileID: 2010562463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 2.533, z: 0}
+  m_LocalPosition: {x: -0, y: 3.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1672,7 +1673,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010562463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf3054c6bd2ea42beb7c7b365f711849, type: 3}
   m_Name: 
@@ -1937,13 +1938,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1680719840054213747, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
+      propertyPath: EnemySpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2474932630561805547, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.7
       objectReference: {fileID: 0}
     - target: {fileID: 2474932630561805547, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 2474932630561805547, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1980,6 +1985,14 @@ PrefabInstance:
     - target: {fileID: 5139722559613013370, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370514362529029932, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184937335448966711, guid: 1da27f6ef74414cda8af07e964b3d485, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

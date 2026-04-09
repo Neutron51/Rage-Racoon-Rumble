@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Playershooting : MonoBehaviour
+public class Pistol : MonoBehaviour
 {
     public Transform FirePoint;
     public GameObject Fire;
@@ -16,15 +16,16 @@ public class Playershooting : MonoBehaviour
             Debug.Log("Shoot!");
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        /*if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            
-            //rpg.IsFiring = true;
+            rpg.IsFiring = true;
         }
-        
 
-        /*if(Input.GetKeyUp(KeyCode.Mouse0))
-        rpg.IsFiring = false;*/
+        if(Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            rpg.IsFiring = false;
+        }*/
+        
     }
 
     void Shooting()

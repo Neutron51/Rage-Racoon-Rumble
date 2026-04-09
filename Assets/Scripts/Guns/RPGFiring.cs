@@ -4,13 +4,14 @@ public class RPGFiring : MonoBehaviour
 {
     public bool IsFiring;
 
-    public Missile bullet;
+    public Missiles bullet;
     public float missileSpeed;
 
     public float timeBetweenShots;
     private float shotCounter;
 
     public Transform firePoint;
+    public RPGFiring rpg;
 
     private void Start()
     {
@@ -25,13 +26,23 @@ public class RPGFiring : MonoBehaviour
             if(shotCounter <= 0)
             {
                 shotCounter = timeBetweenShots;
-                Missile newMissile = Instantiate(bullet, firePoint.position, firePoint.rotation) as Missile;
+                Missiles newMissile = Instantiate(bullet, firePoint.position, firePoint.rotation) as Missiles;
                 newMissile.speed = missileSpeed;
             }
         }
         else
         {
             shotCounter = 0;
+        }
+        
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            rpg.IsFiring = true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            rpg.IsFiring = false;
         }
     }
 }
