@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &64619952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 351541841775495782, guid: 9235bfed04a8e4837916e81d4d619605, type: 3}
+  m_PrefabInstance: {fileID: 1827137631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &118780595
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,59 +442,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &363128439
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 363128441}
-  - component: {fileID: 363128440}
-  m_Layer: 0
-  m_Name: CatSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &363128440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363128439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  spawnRadius: 0
-  spawnShape: 0
-  boxSize: {x: 0, y: 0}
-  spawningOffset: {x: 0, y: 0, z: 0}
-  navMeshSurface: {fileID: 0}
-  xPos: 0
-  zPos: 0
-  swarmerPrefab: {fileID: 1267155950455855994, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
-  swarmerInterval: 0.5
---- !u!4 &363128441
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363128439}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.03, y: 2, z: 230.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &380131503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -686,59 +638,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &582916250
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 582916252}
-  - component: {fileID: 582916251}
-  m_Layer: 0
-  m_Name: RatSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &582916251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582916250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  spawnRadius: 29
-  spawnShape: 0
-  boxSize: {x: 0, y: 0}
-  spawningOffset: {x: 0, y: 0, z: 0}
-  navMeshSurface: {fileID: 0}
-  xPos: 0
-  zPos: 0
-  swarmerPrefab: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
-  swarmerInterval: 0.5
---- !u!4 &582916252
+--- !u!4 &762798160 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 351541841775495782, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
+  m_PrefabInstance: {fileID: 1695609175}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582916250}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +692,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &878202151 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 351541841775495782, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+  m_PrefabInstance: {fileID: 922306732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &890918388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,7 +1006,6 @@ GameObject:
   - component: {fileID: 1235054564}
   - component: {fileID: 1235054563}
   - component: {fileID: 1235054567}
-  - component: {fileID: 1235054568}
   m_Layer: 7
   m_Name: RatArea
   m_TagString: Untagged
@@ -1231,80 +1139,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 5c1d7bb3699e0450baf933dc5e2eb2e5, type: 2}
   m_BuildHeightMesh: 0
---- !u!114 &1235054568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235054562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  spawnRadius: 477
-  spawnShape: 0
-  boxSize: {x: 0, y: 0}
-  spawningOffset: {x: 0, y: 0, z: 0}
-  navMeshSurface: {fileID: 1235054567}
-  xPos: 50
-  zPos: 50
-  swarmerPrefab: {fileID: 0}
-  swarmerInterval: 3.5
---- !u!1 &1313020891
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1313020893}
-  - component: {fileID: 1313020892}
-  m_Layer: 0
-  m_Name: PitbullSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1313020892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313020891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88516b316fde24f2cb8b9a336653a7c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  spawnRadius: 0
-  spawnShape: 0
-  boxSize: {x: 0, y: 0}
-  spawningOffset: {x: 0, y: 0, z: 0}
-  navMeshSurface: {fileID: 0}
-  xPos: 0
-  zPos: 0
-  swarmerPrefab: {fileID: 1962586530}
-  swarmerInterval: 0.5
---- !u!4 &1313020893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313020891}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 214.8, y: 2, z: 230.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1695609175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1973,11 +1807,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1962586530 stripped
+--- !u!1 &2099900765
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1267155950455855994, guid: faa2eacdd61384533be79e0361a5ed26, type: 3}
-  m_PrefabInstance: {fileID: 380131503}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099900766}
+  - component: {fileID: 2099900767}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099900766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099900765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 83.59466, y: -0, z: 72.77193}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099900767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099900765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3cbfcd9e40f14899aab08def2f63fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoundController
+  state: 2
+  waves:
+  - name: Rat Wave
+    enemy: {fileID: 878202151}
+    count: 20
+    rate: 0
+  - name: Cat Wave
+    enemy: {fileID: 762798160}
+    count: 10
+    rate: 3
+  - name: Pitbull Wave
+    enemy: {fileID: 1828594213}
+    count: 7
+    rate: 3
+  - name: Big Tony
+    enemy: {fileID: 64619952}
+    count: 1
+    rate: 1
+  timeBetweenWaves: 5
+  waveCountdown: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1993,9 +1886,7 @@ SceneRoots:
   - {fileID: 1695609175}
   - {fileID: 380131503}
   - {fileID: 1827137631}
-  - {fileID: 582916252}
-  - {fileID: 363128441}
-  - {fileID: 1313020893}
   - {fileID: 890918388}
   - {fileID: 118780599}
   - {fileID: 256490819}
+  - {fileID: 2099900766}

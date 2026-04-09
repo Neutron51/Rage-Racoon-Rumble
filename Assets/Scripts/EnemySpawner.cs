@@ -31,7 +31,12 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void Start() {
+        if (EnemyPrefabs.Count == 0) {
+            Debug.Log("enemyCount is 0! try adding an EnemyPrefab");
+            return;
+        }
         StartCoroutine(SpawnEnemy()); // Coroiutine to spawn enemies
+        
     }
 
     private IEnumerator SpawnEnemy() {
@@ -54,8 +59,9 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void SpawnRoundRobinEnemy(int SpawnedEnemies) {
+        if (EnemyPrefabs.Count == 0) return;
+        
         int SpawnIndex = SpawnedEnemies % EnemyPrefabs.Count; // 0 % 2 = 0 %
-
         DoSpawnEnemy(SpawnIndex);
     }
 
