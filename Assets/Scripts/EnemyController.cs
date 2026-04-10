@@ -112,10 +112,18 @@ public class EnemyController : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    private void OnizmosSelected() {
+    private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    void OnDestroy() {
+        RoundController rc = FindFirstObjectByType<RoundController>();
+
+        if (rc != null) {
+            rc.DecreaseEnemyCount();
+        }
     }
 }
