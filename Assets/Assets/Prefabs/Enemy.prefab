@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 9025923046092048895}
   - component: {fileID: 7370514362529029932}
   - component: {fileID: 9184937335448966711}
-  - component: {fileID: 1680719840054213747}
-  - component: {fileID: 7875910929486639603}
   - component: {fileID: 2096429067812005525}
   m_Layer: 0
   m_Name: Enemy
@@ -143,31 +141,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1680719840054213747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5139722559613013370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc18f2eae3994b22aab27de2048c6f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  EnemySpeed: 5
---- !u!114 &7875910929486639603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5139722559613013370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a5b0f5dfcd04c838345440e6d4b1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
 --- !u!114 &2096429067812005525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +154,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   Health: 100
+  EnemySpeed: 0
