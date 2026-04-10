@@ -301,11 +301,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &302868728 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1267155950455855994, guid: 9235bfed04a8e4837916e81d4d619605, type: 3}
-  m_PrefabInstance: {fileID: 1827137631}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,11 +438,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &369923438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1267155950455855994, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
-  m_PrefabInstance: {fileID: 1695609175}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &380131503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,11 +638,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &651322449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1267155950455855994, guid: faa2eacdd61384533be79e0361a5ed26, type: 3}
-  m_PrefabInstance: {fileID: 380131503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,11 +987,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1122620876 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
-  m_PrefabInstance: {fileID: 922306732}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1235054562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,19 +1997,19 @@ MonoBehaviour:
   roundCount: {fileID: 1908048401}
   waves:
   - name: Rat Wave
-    enemy: {fileID: 1122620876}
+    enemy: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
     enemyCount: 20
     rate: 1
   - name: Cat Wave
-    enemy: {fileID: 369923438}
+    enemy: {fileID: 1267155950455855994, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
     enemyCount: 15
     rate: 1
   - name: Pitbull Wave
-    enemy: {fileID: 651322449}
+    enemy: {fileID: 1267155950455855994, guid: faa2eacdd61384533be79e0361a5ed26, type: 3}
     enemyCount: 5
     rate: 1
   - name: Big Tony
-    enemy: {fileID: 302868728}
+    enemy: {fileID: 1267155950455855994, guid: 9235bfed04a8e4837916e81d4d619605, type: 3}
     enemyCount: 1
     rate: 1
   timeBetweenWaves: 5
