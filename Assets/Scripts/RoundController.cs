@@ -139,6 +139,8 @@
             if (nextWave >= waves.Length) {
                 nextWave = 0;
                 Debug.Log("All waves complete!");
+                state = SpawnState.waiting; // stop the spawn loop from restarting
+                return; // do not reset nextWave
                 Debug.Log($"Next wave index: {nextWave}");
             }
         }

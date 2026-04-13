@@ -25,6 +25,10 @@ public class EnemyController : MonoBehaviour {
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private void Start() {
+        myAnimator = GetComponent<Animator>();
+    }
+
     private void Awake() {
         Player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -85,6 +89,8 @@ public class EnemyController : MonoBehaviour {
 
         transform.LookAt(Player);
 
+        myAnimator.AnimatorTransition(Attack);
+
         if (!alreadyAttacked) {
             // Attack Code here
             // Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
@@ -121,6 +127,8 @@ public class EnemyController : MonoBehaviour {
 
     void OnDestroy() {
         RoundController rc = FindFirstObjectByType<RoundController>();
+
+        myAnimator.SetBool("IsDead", true);
 
         if (rc != null) {
             rc.DecreaseEnemyCount();

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5036176475372546411}
   m_Layer: 0
   m_Name: CAT
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267155950455855994}
   m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 8
@@ -136,7 +136,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
-  m_WalkableMask: 16
+  m_WalkableMask: 120
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5036176475372546411
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1920
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
