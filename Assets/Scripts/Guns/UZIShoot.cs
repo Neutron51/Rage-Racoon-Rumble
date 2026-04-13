@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using TMPro;
+using UnityEditor.Rendering.Universal;
 
 public class UZIShoot : MonoBehaviour
 {
@@ -12,14 +13,14 @@ public class UZIShoot : MonoBehaviour
 
     bool shooting, readyToShoot, reloading;
 
+    public Camera tdsCam;
     public Transform shootingPos;
-    public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
 
     //public CamShake camShake;
     public TextMeshProUGUI text;
 
-    private void Start()
+    private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
@@ -28,45 +29,64 @@ public class UZIShoot : MonoBehaviour
     private void Update()
     {
         MyInput();
-        text.SetText(bulletsLeft + " / " + magazineSize);    
+        text.SetText(bulletsLeft + " / " + magazineSize);
     }
 
     private void MyInput()
     {
-        if(allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        if (allowButtonHold) 
+        {
+            shooting = Input.GetKey(KeyCode.Mouse0);
+        }
+        else
+        {
+            shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        }
 
-        if(Input.GetKeyDown(KeyCode.R)&& bulletsLeft < magazineSize && !reloading) Reload();
+        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        {
+            Reload();
+        }
 
         //Shoot
         if(readyToShoot && shooting && !reloading && bulletsLeft > 0)
         {
+            bulletsShot = bulletsPerTap;
             Shoot();
-        }
+            Debug.Log("Shooting!");
+        } 
     }
 
     private void Shoot()
     {
+        RaycastHit rayHit;
         readyToShoot = false;
 
         //Spread
-        //float x = Random.Range(-spread, spread);
-        //float y = Random.Range(-spread, spread);
+        float x = Random.Range(-spread, spread);
+        float y = Random.Range(-spread, spread);
 
         //Calculating direction with Spread
-        //Vector3 direction = shootingPos.transform.TransformDirection(Vector3.forward) + new Vector3(x, y, 0);
+        //Vector3 direction = tdsCam.transform.forward + new Vector3(x, y, 0);
 
         //RayCast
-        if(Physics.Raycast(shootingPos.transform.position, transform.TransformDirection(Vector3.forward), out rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.forward), out rayHit, range, whatIsEnemy))
         {
-            Debug.Log(rayHit.collider.name);
+            Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.orange);
+            //Debug.Log(rayHit.collider.name);
             if(rayHit.collider.CompareTag("Enemy"))
-                rayHit.collider.GetComponent<Enemy>().Damage(damage);        
-                Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.orange);        
+            {
+                rayHit.collider.GetComponent<Enemy>().Damage(damage);
+            }
         }
 
         bulletsLeft--;
+        bulletsShot--;
+
         Invoke("ResetShot", timeBetweenShooting);
+
+        //if(bulletsLeft > 0 && bulletsLeft > 0)
+        //Invoke("Shoot", timeBetweenShots);
     }
 
     private void ResetShot()
@@ -77,7 +97,7 @@ public class UZIShoot : MonoBehaviour
     private void Reload()
     {
         reloading = true;
-        Invoke("ReloadingFinished", reloadTime);
+        Invoke("ReloadFinished", reloadTime);
     }
 
     private void ReloadFinished()
