@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 1500
   walkPointRange: 20
   sightRange: 20
-  attackRange: 2
+  attackRange: 0.5
   health: 15
   damageDealt: 4
   timeBetweenAttacks: 2

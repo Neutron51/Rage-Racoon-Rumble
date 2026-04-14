@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEditor.Animations;
 using UnityEngine.AI;
+using JetBrains.Annotations;
 
 public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;
@@ -25,8 +27,13 @@ public class EnemyController : MonoBehaviour {
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    [Header("Animator")]
+    [SerializeField] private AnimatorController animController;
+    [SerializeField] private Animator anim;
+    
+
     private void Start() {
-        myAnimator = GetComponent<Animator>();
+        anim.CrossFade("Walking", 0, 0);
     }
 
     private void Awake() {
@@ -89,7 +96,7 @@ public class EnemyController : MonoBehaviour {
 
         transform.LookAt(Player);
 
-        myAnimator.AnimatorTransition(Attack);
+        /* myAnimator.AnimatorTransition(Attack); */
 
         if (!alreadyAttacked) {
             // Attack Code here
@@ -128,7 +135,7 @@ public class EnemyController : MonoBehaviour {
     void OnDestroy() {
         RoundController rc = FindFirstObjectByType<RoundController>();
 
-        myAnimator.SetBool("IsDead", true);
+        anim.CrossFade("Death", 0.2f);
 
         if (rc != null) {
             rc.DecreaseEnemyCount();
