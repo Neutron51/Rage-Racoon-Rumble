@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour {
     
 
     private void Start() {
-        anim.CrossFade("Walking", 0, 0);
+        anim = GetComponent<Animator>(); // get animator at starts 
     }
 
     private void Awake() {
@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour {
 
         transform.LookAt(Player);
 
-        /* myAnimator.AnimatorTransition(Attack); */
+        anim.SetTrigger("Attacking");
 
         if (!alreadyAttacked) {
             // Attack Code here
@@ -118,12 +118,14 @@ public class EnemyController : MonoBehaviour {
     public void TakenDamage(int damage) {
         health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        anim.SetTrigger("Damaged");
+
+        if (health <= 0) Invoke(nameof(OnDestroy), 0.5f);
     }
 
-    private void DestroyEnemy() {
+    /* private void DestroyEnemy() {
         Destroy(gameObject);
-    }
+    } */
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
@@ -132,10 +134,12 @@ public class EnemyController : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 
+    // ---- DEATH ---
+
     void OnDestroy() {
         RoundController rc = FindFirstObjectByType<RoundController>();
 
-        anim.CrossFade("Death", 0.2f);
+        anim.SetBool("isDead", true);
 
         if (rc != null) {
             rc.DecreaseEnemyCount();

@@ -89,7 +89,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   animController: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 9198272804343621994}
 --- !u!95 &9198272804343621994
 Animator:
   serializedVersion: 7
