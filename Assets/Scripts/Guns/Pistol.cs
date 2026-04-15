@@ -7,6 +7,7 @@ public class Pistol : MonoBehaviour
     public Transform FirePoint;
     public GameObject Fire;
     public GameObject HitPoint;
+    private Animator animator;
     
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
@@ -14,12 +15,11 @@ public class Pistol : MonoBehaviour
     int bulletsLeft, bulletsShot;
     bool shooting, readyToShoot, reloading;
 
-    public RPGFiring rpg;
-
     public TextMeshProUGUI text;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -60,6 +60,15 @@ public class Pistol : MonoBehaviour
             Shooting();
             Debug.Log("Shooting");
         } 
+
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator.SetBool("IsShooting", true);
+        }
+        else
+        {
+            animator.SetBool("IsShooting", false);
+        }
     }
 
     void Shooting()
