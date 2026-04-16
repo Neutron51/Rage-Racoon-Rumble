@@ -17,9 +17,15 @@ public class Pistol : MonoBehaviour
 
     public TextMeshProUGUI text;
 
+    /*public AudioClip ShootSFX;
+    public AudioClip EmptyClip;
+    public AudioSource source;*/
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        /*source = GetComponent<AudioSource>();
+        EmptyClip = GetComponent<AudioClip>();*/
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -51,6 +57,10 @@ public class Pistol : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
         {
             Reload();
+            /*if(bulletsLeft > 1)
+            {
+                source.(EmptyClip);
+            }*/
         }
 
         //Shoot
@@ -63,12 +73,23 @@ public class Pistol : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            animator.SetBool("IsShooting", true);
+            //animator.SetBool("IsShooting", true);
+            animator.SetTrigger("Shoot");
+            /*if(bulletsLeft > 1)
+            {
+                source.PlayOneShot(PistolShoot);
+                return;
+            }
+            
+            if(bulletsLeft == 0)
+            {
+                source.PlayOneShot(EmptyClip);
+            }*/
         }
-        else
+        /*else
         {
             animator.SetBool("IsShooting", false);
-        }
+        }*/
     }
 
     void Shooting()

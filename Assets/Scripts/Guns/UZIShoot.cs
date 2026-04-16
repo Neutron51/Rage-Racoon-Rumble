@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using TMPro;
 using UnityEditor.Rendering.Universal;
+using UnityEditor;
 
 public class UZIShoot : MonoBehaviour
 {
@@ -17,11 +18,17 @@ public class UZIShoot : MonoBehaviour
     public Transform shootingPos;
     public LayerMask whatIsEnemy;
 
+    private Animator animator;
+
     //public CamShake camShake;
     public TextMeshProUGUI text;
 
+    public AudioSource source;
+
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -30,6 +37,23 @@ public class UZIShoot : MonoBehaviour
     {
         MyInput();
         text.SetText(bulletsLeft + " / " + magazineSize);
+        if(animator != null)
+        {
+            if(Input.GetKey(KeyCode.Mouse0))
+            {
+                //animator.SetBool("IsShooting", true);
+                animator.SetTrigger("Shoot");
+
+                if(bulletsLeft == 0)
+                {
+                    source.Play();
+                }
+            }
+            /*else
+            {
+                animator.SetBool("IsShooting", false);
+            }*/
+        }
     }
 
     private void MyInput()
@@ -46,6 +70,7 @@ public class UZIShoot : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
         {
             Reload();
+            source.Pause();
         }
 
         //Shoot
