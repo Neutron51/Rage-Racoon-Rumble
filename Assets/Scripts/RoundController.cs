@@ -1,6 +1,7 @@
     using System;
     using System.Collections;
-    using TMPro;
+using System.Collections.Generic;
+using TMPro;
     using Unity.VisualScripting;
     using UnityEditor.ShaderKeywordFilter;
     using UnityEngine;
@@ -23,13 +24,17 @@
             public int enemyCount;
             public float rate;
         }
+        
+        public List<EnemyController> enemyList;
 
-        private int aliveEnemies = 0;
+        private int aliveEnemies = 0; // just a counter, this number does not "kill" enemies
         public Wave[] waves;
         private int nextWave = 0;
 
         public float timeBetweenWaves = 5f;
         public float waveCountdown = 0f;
+
+
 
         // ---- START A WAVE COUNTDOWN ONCE THE GAME STARTS ----
 
@@ -52,10 +57,14 @@
             // kill an enemy when you press the F key
 
             if (Keyboard.current.fKey.wasPressedThisFrame && aliveEnemies > 0) {
-                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                EnemyController ec = enemyList[enemyList.Count - 1];
 
-                if (enemies.Length > 0) {
-                    Destroy(enemies[0]);
+                ec.TakenDamage(999);
+                enemyList.RemoveAt(enemyList.Count - 1);
+                // objective, make enemies = enemies inside of enemyList
+
+
+                if (enemyList.Count > 0) {
                     Debug.Log("Enemy eliminated!");
                 }
                 else {
@@ -112,6 +121,9 @@
 
             GameObject spawned = Instantiate(_enemy, spawnPos, Quaternion.identity);
             aliveEnemies++;
+
+            // add enemy to list
+            enemyList.Add(spawned.GetComponent<EnemyController>());
 
             // spawn enemy
             Debug.Log($"Spawning Enemy: {_enemy.name}, Alive enemies: {aliveEnemies}");

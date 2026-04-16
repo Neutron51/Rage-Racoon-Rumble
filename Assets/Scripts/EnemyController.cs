@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour {
     
 
     private void Start() {
-        anim = GetComponent<Animator>(); // get animator at starts 
+        // anim = GetComponent<Animator>(); // get animator at starts 
     }
 
     private void Awake() {
@@ -120,7 +120,17 @@ public class EnemyController : MonoBehaviour {
 
         anim.SetTrigger("Damaged");
 
-        if (health <= 0) Invoke(nameof(OnDestroy), 0.5f);
+        if (health <= 0) {
+            RoundController rc = FindFirstObjectByType<RoundController>();
+
+            anim.SetBool("isDead", true);
+
+            if (rc != null) {
+                rc.DecreaseEnemyCount();
+            }
+
+            Destroy(gameObject, 0.95f);
+        };
     }
 
     /* private void DestroyEnemy() {
@@ -136,7 +146,7 @@ public class EnemyController : MonoBehaviour {
 
     // ---- DEATH ---
 
-    void OnDestroy() {
+    /* void OnDestroy() {
         RoundController rc = FindFirstObjectByType<RoundController>();
 
         anim.SetBool("isDead", true);
@@ -144,5 +154,5 @@ public class EnemyController : MonoBehaviour {
         if (rc != null) {
             rc.DecreaseEnemyCount();
         }
-    }
+    } */
 }

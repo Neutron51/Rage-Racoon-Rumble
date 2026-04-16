@@ -1290,14 +1290,15 @@ MonoBehaviour:
   state: 2
   enemyCountText: {fileID: 1939974458}
   roundCount: {fileID: 1908048401}
+  enemyList: []
   waves:
   - name: Rat Wave
     enemy: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
-    enemyCount: 20
+    enemyCount: 5
     rate: 3
   - name: Cat Wave
     enemy: {fileID: 1267155950455855994, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
-    enemyCount: 15
+    enemyCount: 7
     rate: 2
   - name: Pitbull Wave
     enemy: {fileID: 1267155950455855994, guid: faa2eacdd61384533be79e0361a5ed26, type: 3}
