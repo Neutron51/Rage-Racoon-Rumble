@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    /*public static AudioManager Instance;
 
     private void Awake()
     {
@@ -25,5 +25,5 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(audioClip.length * 2f);
 
         Destroy(audioSource);
-    }
+    }*/
 }

@@ -35,13 +35,5 @@ public class MCMovement : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            animator.SetBool("IsShooting", true);
-        }
-        else
-        {
-            animator.SetBool("IsShooting", false);
-        }
     }
 }
