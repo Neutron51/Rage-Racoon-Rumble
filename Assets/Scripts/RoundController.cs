@@ -16,6 +16,7 @@ using TMPro;
 
         [SerializeField] TextMeshProUGUI enemyCountText;
         [SerializeField] TextMeshProUGUI roundCount;
+        [SerializeField] TextMeshProUGUI timerText;
 
         [System.Serializable] // This tells Unity that these params can be changed inside of the editor
         public class Wave {
@@ -31,15 +32,19 @@ using TMPro;
         public Wave[] waves;
         private int nextWave = 0;
 
-        public float timeBetweenWaves = 5f;
+        public float timeBetweenWaves = 3f;
         public float waveCountdown = 0f;
 
+        [Header("Victory Screen")]
+        [SerializeField] public GameObject victoryScreen;
 
 
         // ---- START A WAVE COUNTDOWN ONCE THE GAME STARTS ----
 
         void Start() {
             waveCountdown = timeBetweenWaves;
+
+            victoryScreen.SetActive(false);
         }
 
 
@@ -72,10 +77,15 @@ using TMPro;
                 }   
             }
 
+            // Update GUI text
+
+            UpdateTextGUI();
+
             // *-- COMPLETE WAVE IF ENEMY COUNT IS BELOW 0 --* 
 
             if (state == SpawnState.waiting && aliveEnemies <= 0) {
                 if (aliveEnemies <= 0){
+                    Debug.Log("Wave Completed!");
                     WaveCompleted();
                 }
             }
@@ -84,13 +94,12 @@ using TMPro;
         // ---- START THE WAVE! ----
 
         IEnumerator SpawnWave (Wave _wave) { // IEnumeratos always  
-            waveCountdown = timeBetweenWaves;
             state = SpawnState.spawning;
             Debug.Log("Starting Wave!");
 
             for (int i = 0; i < _wave.enemyCount; i++) {
                 SpawnEnemy(_wave.enemy);
-                yield return new WaitForSeconds( 1f/_wave.rate );
+                // yield return new WaitForSeconds( 1f/_wave.rate );
             }
 
             // Spawn
@@ -102,9 +111,10 @@ using TMPro;
 
         // ---- UPDATE THE TEXT ----
 
-        void UpdateTextGUI(Wave enemywave) {
+        void UpdateTextGUI() {
             enemyCountText.text = $"Enemies Left: {aliveEnemies}";
-            roundCount.text = $"Round: {waves.Length}";
+            roundCount.text = $"Round: {nextWave + 1}";
+            timerText.text = $"{waveCountdown.ToString("0.00")} S"; 
         }
 
         #region Spawn and Kill Enemies
@@ -123,7 +133,7 @@ using TMPro;
             aliveEnemies++;
 
             // add enemy to list
-            enemyList.Add(spawned.GetComponent<EnemyController>());
+            enemyList.Add(spawned.GetComponent<EnemyController>());;
 
             // spawn enemy
             Debug.Log($"Spawning Enemy: {_enemy.name}, Alive enemies: {aliveEnemies}");
@@ -153,6 +163,9 @@ using TMPro;
                 Debug.Log("All waves complete!");
                 state = SpawnState.waiting; // stop the spawn loop from restarting
                 Debug.Log($"Next wave index: {nextWave}");
+
+                // show victory screen
+                victoryScreen.SetActive(true);
                 return; // do not reset nextWave // return terminates any function at that point
             }
         }

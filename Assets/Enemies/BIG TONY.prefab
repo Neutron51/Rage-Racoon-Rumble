@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8711301004204262720}
   - component: {fileID: 4335984206226057898}
   - component: {fileID: 5036176475372546411}
+  - component: {fileID: 6285763158824315279}
   m_Layer: 0
   m_Name: BIG TONY
   m_TagString: Enemy
@@ -169,3 +170,27 @@ MonoBehaviour:
   attackRange: 0
   playerInSightRange: 0
   playerInAttackRange: 0
+  animController: {fileID: 0}
+  anim: {fileID: 6285763158824315279}
+--- !u!95 &6285763158824315279
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267155950455855994}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec944247acd2349f89cd6a0e08bbd2bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
