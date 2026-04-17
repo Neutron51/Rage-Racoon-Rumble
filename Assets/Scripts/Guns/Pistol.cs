@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 public class Pistol : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class Pistol : MonoBehaviour
         text.SetText(bulletsLeft + " / " + magazineSize);
     }
 
+    private void OnDisable()
+    {
+        shooting = false;
+    }
+
     private void MyInput()
     {
         if(allowButtonHold)
@@ -54,7 +60,7 @@ public class Pistol : MonoBehaviour
             Debug.Log("Shoot!");
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
             /*if(bulletsLeft > 1)

@@ -56,6 +56,11 @@ public class UZIShoot : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        shooting = false;
+    }
+
     private void MyInput()
     {
         if (allowButtonHold) 
@@ -67,7 +72,7 @@ public class UZIShoot : MonoBehaviour
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
             source.Pause();
