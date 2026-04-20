@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: 4a8c9ed201d50491eb1e221743201180
+guid: 89cf4690603c84de8915eb6f02525d61
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: concrate
-    second: {fileID: 2100000, guid: 80221da6120a84a1f9531b409b04971d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: door
-    second: {fileID: 2100000, guid: 00bfefa0a476d45388e4aaba5da285de, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: smooth_concrate
-    second: {fileID: 2100000, guid: 51876bd99d4864a87acdd695554d754b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wall
-    second: {fileID: 2100000, guid: db82a3eafcd4c4a90b2aa8dd71a578b4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: window
-    second: {fileID: 2100000, guid: f34b6ea19e1c44f8ca1b0fed986b9915, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
