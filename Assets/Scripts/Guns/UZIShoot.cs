@@ -18,7 +18,7 @@ public class UZIShoot : MonoBehaviour
     public Transform shootingPos;
     public LayerMask whatIsEnemy;
 
-    private Animator animator;
+    public Animator animator;
 
     //public CamShake camShake;
     public TextMeshProUGUI text;
@@ -100,9 +100,9 @@ public class UZIShoot : MonoBehaviour
         //Vector3 direction = tdsCam.transform.forward + new Vector3(x, y, 0);
 
         //RayCast
-        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.right), out rayHit, 100/*, whatIsEnemy*/))
+        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.down), out rayHit, range, whatIsEnemy))
         {
-            Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.right) * rayHit.distance, Color.orange);
+            Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.down) * rayHit.distance, Color.orange);
             //Debug.Log(rayHit.collider.name);
             if(rayHit.collider.CompareTag("Enemy"))
             {

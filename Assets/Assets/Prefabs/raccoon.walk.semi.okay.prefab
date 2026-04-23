@@ -471,6 +471,7 @@ MonoBehaviour:
   FirePoint: {fileID: 1335334690635702457}
   Fire: {fileID: 0}
   HitPoint: {fileID: 0}
+  animator: {fileID: 0}
   timeBetweenShooting: 0.05
   spread: 0.02
   range: 50
@@ -609,12 +610,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 223937189341002874}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1990081917872387127}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 279070223282376782}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6688135611174066118}
@@ -825,59 +820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00984ffb9eec4d4f9371758a687935c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDirection
---- !u!114 &1990081917872387127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4571583102014933641}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf3054c6bd2ea42beb7c7b365f711849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pistol
-  damage: 15
-  FirePoint: {fileID: 1335334690635702457}
-  Fire: {fileID: 0}
-  HitPoint: {fileID: 0}
-  timeBetweenShooting: 0.05
-  spread: 0.02
-  range: 50
-  reloadTime: 2.5
-  timeBetweenShots: 0
-  magazineSize: 12
-  bulletsPerTap: 1
-  allowButtonHold: 0
-  text: {fileID: 0}
---- !u!114 &279070223282376782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4571583102014933641}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de4f2819d9060432c87e6a3f63f1c06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UZIShoot
-  damage: 30
-  timeBetweenShooting: 0.05
-  spread: 0.02
-  range: 100
-  reloadTime: 1.5
-  timeBetweenShots: 0.5
-  magazineSize: 25
-  bulletsPerTap: 1
-  allowButtonHold: 1
-  tdsCam: {fileID: 0}
-  shootingPos: {fileID: 3997578648854662889}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  text: {fileID: 0}
-  source: {fileID: 6688135611174066118}
 --- !u!82 &6688135611174066118
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1093,9 +1035,6 @@ PrefabInstance:
       addedObject: {fileID: 4353289977656898719}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91817dac65dfc4bde8bb353737470425, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9155391141749457308}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91817dac65dfc4bde8bb353737470425, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2078185716772178159}
   m_SourcePrefab: {fileID: 100100000, guid: 91817dac65dfc4bde8bb353737470425, type: 3}
 --- !u!1 &7243367512155489927 stripped
@@ -1150,30 +1089,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 4294967295
+  animator: {fileID: 0}
   text: {fileID: 0}
   source: {fileID: 2078185716772178159}
---- !u!95 &9155391141749457308
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7243367512155489927}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 683f15ba2c7f149f8b641e4dae1b82ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &2078185716772178159
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Runtime.CompilerServices;
+using System.Collections;
 
 public class Pistol : MonoBehaviour
 {
@@ -8,13 +9,15 @@ public class Pistol : MonoBehaviour
     public Transform FirePoint;
     public GameObject Fire;
     public GameObject HitPoint;
-    private Animator animator;
+    public Animator animator;
     
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
     int bulletsLeft, bulletsShot;
     bool shooting, readyToShoot, reloading;
+
+    //private LineRenderer bulletTracer;
 
     public TextMeshProUGUI text;
 
@@ -25,6 +28,7 @@ public class Pistol : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        //bulletTracer = GetComponent<LineRenderer>();
         /*source = GetComponent<AudioSource>();
         EmptyClip = GetComponent<AudioClip>();*/
         bulletsLeft = magazineSize;
@@ -34,6 +38,8 @@ public class Pistol : MonoBehaviour
     void Update()
     {
         MyInput();
+        text.SetText(bulletsLeft + " / " + magazineSize);
+        //StartCoroutine(ShotEffects());
 
         /*if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -44,7 +50,7 @@ public class Pistol : MonoBehaviour
         {
             rpg.IsFiring = false;
         }*/
-        text.SetText(bulletsLeft + " / " + magazineSize);
+        
     }
 
     private void OnDisable()
@@ -106,7 +112,7 @@ public class Pistol : MonoBehaviour
         if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out hit, 100))
         {
             Debug.DrawRay(FirePoint.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.orange);
-
+            //bulletTracer.SetPosition(1, hit.point);    
             //GameObject a = Instantiate(Fire, FirePoint.position, Quaternion.identity);
             //GameObject b = Instantiate(HitPoint, hit.point, Quaternion.identity);
 
@@ -118,12 +124,25 @@ public class Pistol : MonoBehaviour
                 hit.collider.GetComponent<Enemy>().Damage(damage);
             }
         }
+        /*else
+        {
+            bulletTracer.SetPosition(1, FirePoint.position + transform.TransformDirection(Vector3.right) * range);
+        }*/
 
         bulletsLeft--;
         bulletsShot--;
 
         Invoke("ResetShot", timeBetweenShooting);
     }
+
+    /*private IEnumerator ShotEffects()
+    {
+        bulletTracer.enabled = true;
+
+        yield return new WaitForSeconds(0.02f);
+
+        bulletTracer.enabled = false;
+    }*/
 
     private void ResetShot()
     {
