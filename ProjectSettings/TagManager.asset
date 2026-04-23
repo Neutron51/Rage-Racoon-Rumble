@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - VictoryScreen
+  - Glock
+  - Uzi
+  - RPG
   layers:
   - Default
   - TransparentFX

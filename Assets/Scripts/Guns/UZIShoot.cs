@@ -41,19 +41,24 @@ public class UZIShoot : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Mouse0))
             {
-                //animator.SetBool("IsShooting", true);
-                animator.SetTrigger("Shoot");
+                animator.SetBool("IsShooting", true);
+                //nimator.SetTrigger("Shoot");
 
                 if(bulletsLeft == 0)
                 {
                     source.Play();
                 }
             }
-            /*else
+            else
             {
                 animator.SetBool("IsShooting", false);
-            }*/
+            }
         }
+    }
+
+    private void OnDisable()
+    {
+        shooting = false;
     }
 
     private void MyInput()
@@ -67,7 +72,7 @@ public class UZIShoot : MonoBehaviour
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
+        if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
             source.Pause();
@@ -95,9 +100,9 @@ public class UZIShoot : MonoBehaviour
         //Vector3 direction = tdsCam.transform.forward + new Vector3(x, y, 0);
 
         //RayCast
-        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.forward), out rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.right), out rayHit, 100/*, whatIsEnemy*/))
         {
-            Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.orange);
+            Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.right) * rayHit.distance, Color.orange);
             //Debug.Log(rayHit.collider.name);
             if(rayHit.collider.CompareTag("Enemy"))
             {
