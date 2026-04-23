@@ -23,7 +23,7 @@ public class MCMovement : MonoBehaviour
 
     public void movePlayer()
     {
-        Vector3 movement = new Vector3(move.x, 0f, move.y);
+        Vector3 movement = new Vector3(move.y, 0f, move.x * -1f);
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 
