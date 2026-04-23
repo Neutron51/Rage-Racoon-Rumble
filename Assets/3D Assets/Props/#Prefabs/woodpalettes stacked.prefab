@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5630244084385858440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8314915023069897817}
+  m_Layer: 0
+  m_Name: woodpalettes stacked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8314915023069897817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630244084385858440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.980362, y: 0.0013227686, z: -2.7146304}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4667395661809960590}
+  - {fileID: 2009347850470232778}
+  - {fileID: 2137709830904817917}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1882525254200086294
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8314915023069897817}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 24.758715
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00039863586
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25967723
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0024490356
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7026813
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7026814
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.078986816
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.078986846
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 12.827
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_Name
+      value: woodpallets_withUV (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+--- !u!4 &2137709830904817917 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+  m_PrefabInstance: {fileID: 1882525254200086294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2046914910667175201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8314915023069897817}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0003528595
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12967724
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00588274
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7030695
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7030696
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0754533
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0754533
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -12.251
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_Name
+      value: woodpallets_withUV (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+--- !u!4 &2009347850470232778 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+  m_PrefabInstance: {fileID: 2046914910667175201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5138416810585792869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8314915023069897817}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7063186
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70631874
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.033375513
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.033375517
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.411
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+      propertyPath: m_Name
+      value: woodpallets_withUV
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+--- !u!4 &4667395661809960590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03ea3513ed5324df2b6bb38b6f097ed6, type: 3}
+  m_PrefabInstance: {fileID: 5138416810585792869}
+  m_PrefabAsset: {fileID: 0}
