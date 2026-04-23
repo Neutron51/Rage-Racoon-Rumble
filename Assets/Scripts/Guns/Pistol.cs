@@ -79,8 +79,8 @@ public class Pistol : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            //animator.SetBool("IsShooting", true);
-            animator.SetTrigger("Shoot");
+            animator.SetBool("IsShooting", true);
+            //animator.SetTrigger("Shoot");
             /*if(bulletsLeft > 1)
             {
                 source.PlayOneShot(PistolShoot);
@@ -92,10 +92,10 @@ public class Pistol : MonoBehaviour
                 source.PlayOneShot(EmptyClip);
             }*/
         }
-        /*else
+        else
         {
             animator.SetBool("IsShooting", false);
-        }*/
+        }
     }
 
     void Shooting()
@@ -103,9 +103,9 @@ public class Pistol : MonoBehaviour
         RaycastHit hit;
         readyToShoot = false;
 
-        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.forward), out hit, 100))
+        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out hit, 100))
         {
-            Debug.DrawRay(FirePoint.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.orange);
+            Debug.DrawRay(FirePoint.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.orange);
 
             //GameObject a = Instantiate(Fire, FirePoint.position, Quaternion.identity);
             //GameObject b = Instantiate(HitPoint, hit.point, Quaternion.identity);
