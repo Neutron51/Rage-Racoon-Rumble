@@ -127,7 +127,7 @@ using TMPro;
                 return;
             }
 
-            Vector3 spawnPos = new Vector3(UnityEngine.Random.Range(-10,10), 0, UnityEngine.Random.Range(-10, 10));
+            Vector3 spawnPos = new Vector3(UnityEngine.Random.Range(-3,3), 0, UnityEngine.Random.Range(-3, 3));
 
             GameObject spawned = Instantiate(_enemy, spawnPos, Quaternion.identity);
             aliveEnemies++;

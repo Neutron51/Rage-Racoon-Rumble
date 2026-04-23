@@ -82,6 +82,7 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
   timeBetweenAttacks: 0
+  damageDealt: 0
   projectile: {fileID: 0}
   sightRange: 0
   attackRange: 0
@@ -89,6 +90,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   animController: {fileID: 0}
   anim: {fileID: 5547722883022952453}
+  playerHealth: {fileID: 0}
 --- !u!1001 &8139806077403830850
 PrefabInstance:
   m_ObjectHideFlags: 0

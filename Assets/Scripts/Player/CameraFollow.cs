@@ -4,18 +4,18 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform Player;
 
-    float camOffsetZ;
+    float camOffsetX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        camOffsetZ = gameObject.transform.position.z - Player.position.z;
+        camOffsetX = gameObject.transform.position.x - Player.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 m_cameraPos = new Vector3(Player.position.x, gameObject.transform.position.y, Player.position.z + camOffsetZ);
+        Vector3 m_cameraPos = new Vector3(Player.position.x + camOffsetX, gameObject.transform.position.y, Player.position.z);
 
         gameObject.transform.position = m_cameraPos;
     }

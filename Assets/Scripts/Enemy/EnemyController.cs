@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour {
 
     [Header("Attacking")]
     public float timeBetweenAttacks;
+    public int damageDealt;
     bool alreadyAttacked;
     public GameObject projectile;
 
@@ -30,6 +31,9 @@ public class EnemyController : MonoBehaviour {
     [Header("Animator")]
     [SerializeField] private AnimatorController animController;
     [SerializeField] private Animator anim;
+
+    [Header("Player")]
+    [SerializeField] public PlayerHealth playerHealth;
     
 
     private void Start() {
@@ -108,6 +112,8 @@ public class EnemyController : MonoBehaviour {
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+
+        playerHealth.TakeDamage(damageDealt);
     }
 
     private void ResetAttack() {
