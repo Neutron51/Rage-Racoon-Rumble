@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
-    public int minDamage = 0;
+    public int minHealth = 0;
     public int currentHealth;
 
     public GameObject[] hearts; // array of heart GameObjects
@@ -15,30 +15,6 @@ public class PlayerHealth : MonoBehaviour {
     void Start() {
         currentHealth = maxHealth; // Start at 100
     }
-
-    /* void Update() {
-        for (int i = currentHealth; i < hearts.Length; i-- ) {
-            if (i < 80) {
-                i--; 
-            }
-            if (i < 60) {
-                i--;
-            }
-            if (i < 40) {
-                i--;
-            }
-            if (i < 20) {
-                i--;
-            }
-            if (i < 0) {
-                Destroy(gameObject);
-            }
-
-            else {
-                Debug.Log("Health not changed");
-            }
-        }
-    } */
 
     public void TakeDamage(int amount) {
         currentHealth -= amount;
@@ -58,12 +34,12 @@ public class PlayerHealth : MonoBehaviour {
             Destroy(hearts[1]);
             Debug.Log($"You got {hearts.Length} hearts left!");
         }
-        if (currentHealth < minDamage) {
+        if (currentHealth < minHealth) {
             Destroy(hearts[0]);
             Debug.Log($"You got {hearts.Length} hearts left!");
 
             Destroy(gameObject);
-            DeathScreen.SetActive(false);
+            DeathScreen.SetActive(true);
         }
 
         Debug.Log($"Current health: {currentHealth} HP");

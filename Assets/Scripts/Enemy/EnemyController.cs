@@ -53,6 +53,7 @@ public class EnemyController : MonoBehaviour {
             attackRange = enemyData.attackRange;
             timeBetweenAttacks = enemyData.timeBetweenAttacks;
 
+            damageDealt = enemyData.damageDealt;
             walkPointRange = enemyData.walkPointRange;
             projectile = enemyData.projectilePrefab;
         }
@@ -65,7 +66,7 @@ public class EnemyController : MonoBehaviour {
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer(damageDealt);
+        if (playerInAttackRange && !alreadyAttacked) AttackPlayer(damageDealt);
     }
     private void Patroling() {
         if (!walkPointSet) SearchWalkPoint();
@@ -95,27 +96,37 @@ public class EnemyController : MonoBehaviour {
         agent.SetDestination(Player.position);
     }
 
+     IEnumerator TimeBetweenAttacks() {
+        yield return new WaitForSeconds(timeBetweenAttacks);
+    }  
+
+    IEnumerator AttackLoop() {
+        while (true) {
+            if (!alreadyAttacked) {
+                AttackPlayer(damageDealt);
+                yield return new WaitForSeconds(timeBetweenAttacks);
+            }
+            else {
+                yield return null; // wait a frame if not attacking
+            }
+        }
+    } 
+
     private void AttackPlayer(int damageDealt) {
+        alreadyAttacked = true;
+        
         // Make sure enemy doesn;t move
         agent.SetDestination(transform.position);
-
         transform.LookAt(Player);
-
         anim.SetTrigger("Attacking");
 
-        if (!alreadyAttacked) {
-            // Attack Code here
-            // Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-
-            /* rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse); */
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-
         playerHealth = Player.GetComponent<PlayerHealth>();
-        playerHealth.TakeDamage(damageDealt);
+        if (playerHealth != null) {
+            playerHealth.TakeDamage(damageDealt);
+        }
+        
+        // moved Invoke out of the old if Attacked statement
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
     }
 
     private void ResetAttack() {
