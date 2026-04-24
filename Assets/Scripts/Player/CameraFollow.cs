@@ -4,7 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform Player;
 
-    float camOffsetX;
+    float camOffsetZ;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

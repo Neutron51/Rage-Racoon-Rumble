@@ -2592,6 +2592,10 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 2053324941}
+    - target: {fileID: 4353289977656898719, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
+      propertyPath: tdsCam
+      value: 
+      objectReference: {fileID: 330585545}
     - target: {fileID: 4571583102014933641, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
       propertyPath: m_Name
       value: raccoon.walk.semi.okay
@@ -6837,7 +6841,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c5fd2ab641dd3441894138973f1b424b, type: 2}
   m_BuildHeightMesh: 0

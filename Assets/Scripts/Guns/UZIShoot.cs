@@ -1,11 +1,13 @@
 using UnityEngine;
-using UnityEngine.Video;
 using TMPro;
-using UnityEditor.Rendering.Universal;
-using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
 
 public class UZIShoot : MonoBehaviour
 {
+    [SerializeField]
+    private TrailRenderer BulletTrail;
+
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
@@ -20,14 +22,12 @@ public class UZIShoot : MonoBehaviour
 
     public Animator animator;
 
-    //public CamShake camShake;
     public TextMeshProUGUI text;
 
-    public AudioSource source;
+    public AudioClip ShootSFX;
 
     private void Awake()
     {
-        source = GetComponent<AudioSource>();
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -41,12 +41,6 @@ public class UZIShoot : MonoBehaviour
             if(Input.GetKey(KeyCode.Mouse0))
             {
                 animator.SetBool("IsShooting", true);
-                //nimator.SetTrigger("Shoot");
-
-                if(bulletsLeft == 0)
-                {
-                    source.Play();
-                }
             }
             else
             {
@@ -74,7 +68,6 @@ public class UZIShoot : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
-            source.Pause();
         }
 
         //Shoot
@@ -88,34 +81,45 @@ public class UZIShoot : MonoBehaviour
 
     private void Shoot()
     {
-        RaycastHit rayHit;
         readyToShoot = false;
 
-        //Spread
-        float x = Random.Range(-spread, spread);
-        float y = Random.Range(-spread, spread);
-
-        //Calculating direction with Spread
-        //Vector3 direction = tdsCam.transform.forward + new Vector3(x, y, 0);
-
         //RayCast
-        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.down), out rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.down), out RaycastHit rayHit, range, whatIsEnemy))
         {
-            Debug.DrawRay(shootingPos.position, transform.TransformDirection(Vector3.down) * rayHit.distance, Color.orange);
-            //Debug.Log(rayHit.collider.name);
+            TrailRenderer trail = Instantiate(BulletTrail, shootingPos.position, Quaternion.identity);
+
+            StartCoroutine(SpawnTrail(trail, rayHit));
+
             if(rayHit.collider.CompareTag("Enemy"))
             {
                 rayHit.collider.GetComponent<Enemy>().Damage(damage);
             }
         }
 
+        //AudioManager1.Instance.PlaySFX(ShootSFX, 0.25f);
+
         bulletsLeft--;
         bulletsShot--;
 
         Invoke("ResetShot", timeBetweenShooting);
+    }
 
-        //if(bulletsLeft > 0 && bulletsLeft > 0)
-        //Invoke("Shoot", timeBetweenShots);
+    private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit rayHit)
+    {
+        float time = 0;
+        Vector3 startPos = trail.transform.position;
+
+        while(time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPos, rayHit.point, time);
+            time += Time.deltaTime / trail.time;
+
+            yield return null;
+        }
+
+        trail.transform.position = rayHit.point;
+
+        Destroy(trail.gameObject, trail.time);
     }
 
     private void ResetShot()

@@ -467,6 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3054c6bd2ea42beb7c7b365f711849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pistol
+  BulletTrail: {fileID: 5151487005670865179, guid: 6408566b3b87b4fd1970fb9d58a44ddf, type: 3}
   damage: 15
   FirePoint: {fileID: 1335334690635702457}
   Fire: {fileID: 0}
@@ -1098,6 +1099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4f2819d9060432c87e6a3f63f1c06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UZIShoot
+  BulletTrail: {fileID: 5151487005670865179, guid: 6408566b3b87b4fd1970fb9d58a44ddf, type: 3}
   damage: 30
   timeBetweenShooting: 0.05
   spread: 0.02
@@ -1114,7 +1116,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   animator: {fileID: 5272454558187642103}
   text: {fileID: 0}
-  source: {fileID: 2078185716772178159}
+  ShootSFX: {fileID: 8300000, guid: 36d3cb740237f4d6f865b60b2a44dcf9, type: 3}
 --- !u!82 &2078185716772178159
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1122,11 +1124,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7243367512155489927}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c79b74ad851d54b32b81d90069173496, type: 3}
+  m_Resource: {fileID: 8300000, guid: 36d3cb740237f4d6f865b60b2a44dcf9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
