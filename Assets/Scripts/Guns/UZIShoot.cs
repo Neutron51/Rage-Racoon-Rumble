@@ -27,7 +27,6 @@ public class UZIShoot : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
         bulletsLeft = magazineSize;
         readyToShoot = true;

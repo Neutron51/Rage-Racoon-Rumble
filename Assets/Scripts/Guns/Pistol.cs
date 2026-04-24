@@ -27,7 +27,6 @@ public class Pistol : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         //bulletTracer = GetComponent<LineRenderer>();
         /*source = GetComponent<AudioSource>();
         EmptyClip = GetComponent<AudioClip>();*/

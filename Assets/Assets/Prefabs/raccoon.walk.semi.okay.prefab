@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 2098750986563551294}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.0000001192093, w: -0.7071068}
-  m_LocalPosition: {x: 0.00358, y: -0.01167, z: 0.00191}
+  m_LocalPosition: {x: 0.00358, y: -0.011224, z: 0.00191}
   m_LocalScale: {x: 0.008064611, y: 0.020363519, z: 0.012713427}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -409,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82673f06138a542bb88fada34aef4ef1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 82673f06138a542bb88fada34aef4ef1, type: 3}
       propertyPath: m_TagString
@@ -471,7 +471,7 @@ MonoBehaviour:
   FirePoint: {fileID: 1335334690635702457}
   Fire: {fileID: 0}
   HitPoint: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 5272454558187642103}
   timeBetweenShooting: 0.05
   spread: 0.02
   range: 50
@@ -496,19 +496,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -15.054001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.873
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.8400002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -516,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -528,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -925,7 +925,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4571583102014933641}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 683f15ba2c7f149f8b641e4dae1b82ec, type: 2}
   m_CullingMode: 0
@@ -1014,7 +1014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91817dac65dfc4bde8bb353737470425, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91817dac65dfc4bde8bb353737470425, type: 3}
       propertyPath: m_TagString
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   range: 100
   reloadTime: 1.5
   timeBetweenShots: 0.5
-  magazineSize: 25
+  magazineSize: 1000
   bulletsPerTap: 1
   allowButtonHold: 1
   tdsCam: {fileID: 0}
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 4294967295
-  animator: {fileID: 0}
+  animator: {fileID: 5272454558187642103}
   text: {fileID: 0}
   source: {fileID: 2078185716772178159}
 --- !u!82 &2078185716772178159
