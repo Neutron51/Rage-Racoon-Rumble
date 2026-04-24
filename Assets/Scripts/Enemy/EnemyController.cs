@@ -37,7 +37,8 @@ public class EnemyController : MonoBehaviour {
     
 
     private void Start() {
-        // anim = GetComponent<Animator>(); // get animator at starts 
+        // anim = GetComponent<Animator>(); // get animator at starts
+        playerHealth = Player.GetComponent<PlayerHealth>();
     }
 
     private void Awake() {
@@ -64,7 +65,7 @@ public class EnemyController : MonoBehaviour {
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (playerInAttackRange && playerInSightRange) AttackPlayer(damageDealt);
     }
     private void Patroling() {
         if (!walkPointSet) SearchWalkPoint();
@@ -94,7 +95,7 @@ public class EnemyController : MonoBehaviour {
         agent.SetDestination(Player.position);
     }
 
-    private void AttackPlayer() {
+    private void AttackPlayer(int damageDealt) {
         // Make sure enemy doesn;t move
         agent.SetDestination(transform.position);
 
@@ -113,6 +114,7 @@ public class EnemyController : MonoBehaviour {
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 
+        playerHealth = Player.GetComponent<PlayerHealth>();
         playerHealth.TakeDamage(damageDealt);
     }
 

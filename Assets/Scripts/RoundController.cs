@@ -38,6 +38,9 @@ using TMPro;
         [Header("Victory Screen")]
         [SerializeField] public GameObject victoryScreen;
 
+        [Header("Spawn Locations")]
+        [SerializeField] public GameObject[] spawnLoc;
+
 
         // ---- START A WAVE COUNTDOWN ONCE THE GAME STARTS ----
 
@@ -73,7 +76,7 @@ using TMPro;
                     Debug.Log("Enemy eliminated!");
                 }
                 else {
-                    Debug.Log("no enemies to kill! 🫡");
+                    Debug.Log("no enemies to kill!");
                 }   
             }
 
@@ -127,13 +130,11 @@ using TMPro;
                 return;
             }
 
-            Vector3 spawnPos = new Vector3(UnityEngine.Random.Range(-3,3), 0, UnityEngine.Random.Range(-3, 3));
-
-            GameObject spawned = Instantiate(_enemy, spawnPos, Quaternion.identity);
+            GameObject spawned = Instantiate(_enemy, spawnLoc[UnityEngine.Random.Range(1, spawnLoc.Length)].transform.position, Quaternion.identity);
             aliveEnemies++;
 
             // add enemy to list
-            enemyList.Add(spawned.GetComponent<EnemyController>());;
+            enemyList.Add(spawned.GetComponent<EnemyController>());
 
             // spawn enemy
             Debug.Log($"Spawning Enemy: {_enemy.name}, Alive enemies: {aliveEnemies}");

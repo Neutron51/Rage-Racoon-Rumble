@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
+    public int minDamage = 0;
     public int currentHealth;
 
     public GameObject[] hearts; // array of heart GameObjects
 
     EnemyController enemyController;
 
+    [SerializeField] private GameObject DeathScreen;
+
     void Start() {
         currentHealth = maxHealth; // Start at 100
     }
 
-    void Update() {
+    /* void Update() {
         for (int i = currentHealth; i < hearts.Length; i-- ) {
             if (i < 80) {
                 i--; 
@@ -35,7 +38,7 @@ public class PlayerHealth : MonoBehaviour {
                 Debug.Log("Health not changed");
             }
         }
-    }
+    } */
 
     public void TakeDamage(int amount) {
         currentHealth -= amount;
@@ -55,9 +58,12 @@ public class PlayerHealth : MonoBehaviour {
             Destroy(hearts[1]);
             Debug.Log($"You got {hearts.Length} hearts left!");
         }
-        if (currentHealth < 0) {
+        if (currentHealth < minDamage) {
             Destroy(hearts[0]);
             Debug.Log($"You got {hearts.Length} hearts left!");
+
+            Destroy(gameObject);
+            DeathScreen.SetActive(false);
         }
 
         Debug.Log($"Current health: {currentHealth} HP");
