@@ -22,6 +22,10 @@ public class Pistol : MonoBehaviour
 
     public TextMeshProUGUI text;
 
+    public AudioClip ShootSFX;
+    public AudioClip EmptySFX;
+    public AudioClip ReloadSFX;
+
     private void Awake()
     {
         bulletsLeft = magazineSize;
@@ -50,6 +54,7 @@ public class Pistol : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
+            AudioManager.Instance.PlaySFX(ReloadSFX, 0.25f);
         }
 
         //Shoot
@@ -58,6 +63,10 @@ public class Pistol : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shooting();
             Debug.Log("Shooting");
+            if(bulletsLeft <= 0)
+            {
+                AudioManager.Instance.PlaySFX(EmptySFX, 1f);
+            }
         } 
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -80,10 +89,10 @@ public class Pistol : MonoBehaviour
 
             StartCoroutine(SpawnTrail(trail, hit));
 
-            if(hit.collider.CompareTag("Enemy"))
+            /*if(hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.GetComponent<Enemy>().Damage(damage);
-            }
+            }*/
             //bulletTracer.SetPosition(1, hit.point);    
             //GameObject a = Instantiate(Fire, FirePoint.position, Quaternion.identity);
             //GameObject b = Instantiate(HitPoint, hit.point, Quaternion.identity);
@@ -91,15 +100,19 @@ public class Pistol : MonoBehaviour
             //Destroy(a, 1);
             //Destroy(b, 1);
 
-            if(hit.collider.CompareTag("Enemy"))
+            /*if(hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.GetComponent<Enemy>().Damage(damage);
-            }
+            }*/
         }
         /*else
         {
             bulletTracer.SetPosition(1, FirePoint.position + transform.TransformDirection(Vector3.right) * range);
         }*/
+
+        BulletDamage();
+
+        AudioManager.Instance.PlaySFX(ShootSFX, 0.20f);
 
         bulletsLeft--;
         bulletsShot--;
@@ -140,5 +153,17 @@ public class Pistol : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
+    }
+
+    private void BulletDamage()
+    {
+        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out RaycastHit hit, 100))
+        {
+            if(hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<EnemyController>().TakenDamage(10);
+                Debug.Log("Enemy hit!");
+            }
+        }
     }
 }
