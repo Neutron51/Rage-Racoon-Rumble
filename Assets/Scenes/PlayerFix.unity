@@ -2641,6 +2641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: d3bb889a12fa94716963c08cce345345, type: 3}
     - target: {fileID: 5589831272892974279, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5589831272892974279, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
       propertyPath: allowButtonHold
       value: 1
       objectReference: {fileID: 0}
