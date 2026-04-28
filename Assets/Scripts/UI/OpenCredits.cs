@@ -11,6 +11,7 @@ public class OpenCredits : MonoBehaviour {
     [SerializeField] public Camera CameraObj;
     [SerializeField] public float CameraX;
     [SerializeField] public float CameraY;
+    [SerializeField] private GameObject SodaCans;
 
     [SerializeField] private AnimatorController animController;
     private Animator anim;
@@ -19,6 +20,7 @@ public class OpenCredits : MonoBehaviour {
 
     void Start() {
         anim = CameraObj.GetComponent<Animator>();
+        SodaCans.SetActive(false);
     }
 
     void Update() {
@@ -37,6 +39,7 @@ public class OpenCredits : MonoBehaviour {
         anim.SetBool("Credits", true);
 
         Responsibility = true;
+        SodaCans.SetActive(true);
 
         // CameraObj.transform.position = newPosition;
         Debug.Log("Credits Clicked!");
@@ -46,6 +49,7 @@ public class OpenCredits : MonoBehaviour {
         anim.SetBool("Credits", false);
 
         Responsibility = false;
+        SodaCans.SetActive(false);
         
         // CameraObj.transform.position = initialPosition;
         Debug.Log("Closed Credits");

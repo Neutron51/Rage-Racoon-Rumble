@@ -99,7 +99,7 @@ MonoBehaviour:
     m_Bits: 128
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 1984
+    m_Bits: 64
   health: 0
   speed: 0
   walkPoint: {x: 0, y: 0, z: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
   animController: {fileID: 0}
   anim: {fileID: 4337268950206123618}
   playerHealth: {fileID: 0}
+  playerHealthAdd: 0
 --- !u!95 &4337268950206123618
 Animator:
   serializedVersion: 7

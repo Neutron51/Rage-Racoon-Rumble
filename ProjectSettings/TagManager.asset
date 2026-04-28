@@ -21,7 +21,7 @@ TagManager:
   - CatGround
   - PitbullyGround
   - BigTonyGroundwhatIsGround
-  - 
+  - PauseLayer
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI Light
+    uniqueID: 1038197209
     locked: 0
   m_RenderingLayers:
   - Default

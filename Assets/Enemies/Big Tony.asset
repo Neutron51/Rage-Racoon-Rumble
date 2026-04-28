@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   speed: 50
   walkPointRange: 20
-  sightRange: 50
-  attackRange: 2
+  sightRange: 20
+  attackRange: 1
   health: 100
   damageDealt: 12
   timeBetweenAttacks: 2
