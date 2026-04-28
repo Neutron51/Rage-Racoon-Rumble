@@ -505,6 +505,8 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowButtonHold: 1
   text: {fileID: 0}
+  myAudioMixer: {fileID: 24100000, guid: 9ee73b5f8e7bf4a5eb082875d0bece57, type: 2}
+  myAudioMixerGroup: {fileID: 767189953700486663, guid: 9ee73b5f8e7bf4a5eb082875d0bece57, type: 2}
   ShootSFX: {fileID: 8300000, guid: d3730997d6d1d456b9ccb46c21c5b41a, type: 3}
   EmptySFX: {fileID: 0}
   ReloadSFX: {fileID: 0}
@@ -656,6 +658,8 @@ MonoBehaviour:
   bulletsPerTap: 1
   allowButtonHold: 1
   text: {fileID: 0}
+  myAudioMixer: {fileID: 24100000, guid: 9ee73b5f8e7bf4a5eb082875d0bece57, type: 2}
+  myAudioMixerGroup: {fileID: 767189953700486663, guid: 9ee73b5f8e7bf4a5eb082875d0bece57, type: 2}
   ShootSFX: {fileID: 8300000, guid: 7f3a7bc6ea8ec4fb7902f1df02899409, type: 3}
   EmptySFX: {fileID: 8300000, guid: c79b74ad851d54b32b81d90069173496, type: 3}
   ReloadSFX: {fileID: 8300000, guid: d3bb889a12fa94716963c08cce345345, type: 3}
@@ -1011,6 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
+  minHealth: 0
   currentHealth: 0
   hearts:
   - {fileID: 0}
@@ -1018,6 +1023,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  DeathScreen: {fileID: 0}
 --- !u!82 &6688135611174066118
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1287,6 +1293,8 @@ MonoBehaviour:
     m_Bits: 4294967295
   animator: {fileID: 5272454558187642103}
   text: {fileID: 0}
+  myAudioMixer: {fileID: 24100000, guid: 9ee73b5f8e7bf4a5eb082875d0bece57, type: 2}
+  myAudioMixerGroup: {fileID: 767189953700486663, guid: 9ee73b5f8e7bf4a5eb082875d0bece57, type: 2}
   ShootSFX: {fileID: 8300000, guid: 7f3a7bc6ea8ec4fb7902f1df02899409, type: 3}
   EmptySFX: {fileID: 8300000, guid: c79b74ad851d54b32b81d90069173496, type: 3}
   ReloadSFX: {fileID: 8300000, guid: d3bb889a12fa94716963c08cce345345, type: 3}

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor.Animations;
 using UnityEngine.AI;
 using JetBrains.Annotations;
+using System;
 
 public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;
@@ -34,6 +35,8 @@ public class EnemyController : MonoBehaviour {
 
     [Header("Player")]
     [SerializeField] public PlayerHealth playerHealth;
+    [SerializeField] public int playerHealthAdd;
+    private bool Immunity;
     
 
     private void Start() {
@@ -52,6 +55,7 @@ public class EnemyController : MonoBehaviour {
             sightRange = enemyData.sightRange;
             attackRange = enemyData.attackRange;
             timeBetweenAttacks = enemyData.timeBetweenAttacks;
+            playerHealthAdd = enemyData.playerHealthAdd;
 
             damageDealt = enemyData.damageDealt;
             walkPointRange = enemyData.walkPointRange;
@@ -83,8 +87,8 @@ public class EnemyController : MonoBehaviour {
 
     private void SearchWalkPoint() {
         // Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
@@ -139,29 +143,46 @@ public class EnemyController : MonoBehaviour {
 
         anim.SetTrigger("Damaged");
 
-        if (health <= 0) {
+        if (Immunity == false) {
+            if (health <= 0) {
+            Immunity = true;
+            KillEnemy();
+           };
+        }
+        
+    }
+
+    public void KillEnemy() {
+        if (Immunity == true) {
             RoundController rc = FindFirstObjectByType<RoundController>();
 
             anim.SetBool("isDead", true);
 
+            // here is the problem
+            //   |
+            //   V
+
             if (rc != null) {
                 rc.DecreaseEnemyCount();
+
+                // Add health to player
+                playerHealth.currentHealth = playerHealth.currentHealth += playerHealthAdd;
             }
 
             Destroy(gameObject, 0.95f);
-        };
+        }
     }
 
     /* private void DestroyEnemy() {
         Destroy(gameObject);
     } */
 
-    private void OnDrawGizmosSelected() {
+    /* private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
+    } */
 
     // ---- DEATH ---
 

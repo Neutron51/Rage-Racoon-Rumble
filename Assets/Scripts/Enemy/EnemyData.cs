@@ -14,6 +14,7 @@ public class EnemyData : ScriptableObject {
     public int health = 100;
     public int damageDealt = 10;
     public float timeBetweenAttacks = 2f;
+    public int playerHealthAdd = 5;
 
     [Header("References")]
     public GameObject projectilePrefab;

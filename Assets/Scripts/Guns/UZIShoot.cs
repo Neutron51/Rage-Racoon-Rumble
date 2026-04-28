@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class UZIShoot : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class UZIShoot : MonoBehaviour
 
     public TextMeshProUGUI text;
 
+    public AudioMixer myAudioMixer;
+    public AudioMixerGroup myAudioMixerGroup;
     public AudioClip ShootSFX;
     public AudioClip EmptySFX;
     public AudioClip ReloadSFX;

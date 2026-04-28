@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Runtime.CompilerServices;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class Pistol : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Pistol : MonoBehaviour
 
     public TextMeshProUGUI text;
 
+    public AudioMixer myAudioMixer;
+    public AudioMixerGroup myAudioMixerGroup;
     public AudioClip ShootSFX;
     public AudioClip EmptySFX;
     public AudioClip ReloadSFX;

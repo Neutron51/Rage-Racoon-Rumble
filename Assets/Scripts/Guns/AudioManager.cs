@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip audioClip, float volume = 1f)
     {
-        StartCoroutine(PlaySFXCoroutine(audioClip, volume));
+        // StartCoroutine(PlaySFXCoroutine(audioClip, volume));
     }
 
     IEnumerator PlaySFXCoroutine(AudioClip audioClip, float volume = 1f)
@@ -26,4 +26,5 @@ public class AudioManager : MonoBehaviour
 
         Destroy(audioSource);
     }
+    
 }

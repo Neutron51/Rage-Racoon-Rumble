@@ -12660,7 +12660,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099900765}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3cbfcd9e40f14899aab08def2f63fa6, type: 3}
   m_Name: 
@@ -12669,7 +12669,11 @@ MonoBehaviour:
   enemyCountText: {fileID: 1939974458}
   roundCount: {fileID: 1908048401}
   timerText: {fileID: 2134808915}
-  enemyList: []
+  enemyList:
+  - {fileID: 5036176475372546411, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
+  - {fileID: 5036176475372546411, guid: 19a0cd43735be430b936b18acf33fe80, type: 3}
+  - {fileID: 5036176475372546411, guid: faa2eacdd61384533be79e0361a5ed26, type: 3}
+  - {fileID: 5036176475372546411, guid: 9235bfed04a8e4837916e81d4d619605, type: 3}
   waves:
   - name: Rat Wave
     enemy: {fileID: 1267155950455855994, guid: 5862464ece47e374eb498a3fd2fe5ed7, type: 3}
