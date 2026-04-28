@@ -5,6 +5,9 @@ using System.Collections;
 
 public class Pistol : MonoBehaviour
 {
+    [SerializeField]
+    private TrailRenderer BulletTrail;
+
     public int damage;
     public Transform FirePoint;
     public GameObject Fire;
@@ -17,19 +20,14 @@ public class Pistol : MonoBehaviour
     int bulletsLeft, bulletsShot;
     bool shooting, readyToShoot, reloading;
 
-    //private LineRenderer bulletTracer;
-
     public TextMeshProUGUI text;
 
-    /*public AudioClip ShootSFX;
-    public AudioClip EmptyClip;
-    public AudioSource source;*/
+    public AudioClip ShootSFX;
+    public AudioClip EmptySFX;
+    public AudioClip ReloadSFX;
 
     private void Awake()
     {
-        //bulletTracer = GetComponent<LineRenderer>();
-        /*source = GetComponent<AudioSource>();
-        EmptyClip = GetComponent<AudioClip>();*/
         bulletsLeft = magazineSize;
         readyToShoot = true;
     }
@@ -38,18 +36,6 @@ public class Pistol : MonoBehaviour
     {
         MyInput();
         text.SetText(bulletsLeft + " / " + magazineSize);
-        //StartCoroutine(ShotEffects());
-
-        /*if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            rpg.IsFiring = true;
-        }
-
-        if(Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            rpg.IsFiring = false;
-        }*/
-        
     }
 
     private void OnDisable()
@@ -68,10 +54,7 @@ public class Pistol : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
-            /*if(bulletsLeft > 1)
-            {
-                source.(EmptyClip);
-            }*/
+            AudioManager.Instance.PlaySFX(ReloadSFX, 0.25f);
         }
 
         //Shoot
@@ -80,22 +63,15 @@ public class Pistol : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shooting();
             Debug.Log("Shooting");
+            if(bulletsLeft <= 0)
+            {
+                AudioManager.Instance.PlaySFX(EmptySFX, 1f);
+            }
         } 
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             animator.SetBool("IsShooting", true);
-            //animator.SetTrigger("Shoot");
-            /*if(bulletsLeft > 1)
-            {
-                source.PlayOneShot(PistolShoot);
-                return;
-            }
-            
-            if(bulletsLeft == 0)
-            {
-                source.PlayOneShot(EmptyClip);
-            }*/
         }
         else
         {
@@ -105,12 +81,18 @@ public class Pistol : MonoBehaviour
 
     void Shooting()
     {
-        RaycastHit hit;
         readyToShoot = false;
 
-        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out hit, 100))
+        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out RaycastHit hit, 100))
         {
-            Debug.DrawRay(FirePoint.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.orange);
+            TrailRenderer trail = Instantiate(BulletTrail, FirePoint.position, Quaternion.identity);
+
+            StartCoroutine(SpawnTrail(trail, hit));
+
+            /*if(hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<Enemy>().Damage(damage);
+            }*/
             //bulletTracer.SetPosition(1, hit.point);    
             //GameObject a = Instantiate(Fire, FirePoint.position, Quaternion.identity);
             //GameObject b = Instantiate(HitPoint, hit.point, Quaternion.identity);
@@ -118,15 +100,19 @@ public class Pistol : MonoBehaviour
             //Destroy(a, 1);
             //Destroy(b, 1);
 
-            if(hit.collider.CompareTag("Enemy"))
+            /*if(hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.GetComponent<Enemy>().Damage(damage);
-            }
+            }*/
         }
         /*else
         {
             bulletTracer.SetPosition(1, FirePoint.position + transform.TransformDirection(Vector3.right) * range);
         }*/
+
+        BulletDamage();
+
+        AudioManager.Instance.PlaySFX(ShootSFX, 0.20f);
 
         bulletsLeft--;
         bulletsShot--;
@@ -134,14 +120,23 @@ public class Pistol : MonoBehaviour
         Invoke("ResetShot", timeBetweenShooting);
     }
 
-    /*private IEnumerator ShotEffects()
+    private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
     {
-        bulletTracer.enabled = true;
+        float time = 0;
+        Vector3 startPos = trail.transform.position;
 
-        yield return new WaitForSeconds(0.02f);
+        while(time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPos, hit.point, time);
+            time += Time.deltaTime / trail.time;
 
-        bulletTracer.enabled = false;
-    }*/
+            yield return null;
+        }
+
+        trail.transform.position = hit.point;
+
+        Destroy(trail.gameObject, trail.time);
+    }
 
     private void ResetShot()
     {
@@ -158,5 +153,17 @@ public class Pistol : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         reloading = false;
+    }
+
+    private void BulletDamage()
+    {
+        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out RaycastHit hit, 100))
+        {
+            if(hit.collider.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<EnemyController>().TakenDamage(10);
+                Debug.Log("Enemy hit!");
+            }
+        }
     }
 }
