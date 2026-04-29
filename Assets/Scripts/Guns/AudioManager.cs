@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public AudioMixerGroup audioMixerGroup;
 
     private void Awake()
     {
@@ -12,12 +14,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip audioClip, float volume = 1f)
     {
-        // StartCoroutine(PlaySFXCoroutine(audioClip, volume));
+        StartCoroutine(PlaySFXCoroutine(audioClip, volume));
     }
 
     IEnumerator PlaySFXCoroutine(AudioClip audioClip, float volume = 1f)
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = audioMixerGroup;
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();

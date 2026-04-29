@@ -9,6 +9,7 @@ TagManager:
   - Glock
   - Uzi
   - RPG
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - CatGround
   - PitbullyGround
   - BigTonyGroundwhatIsGround
-  - PauseLayer
-  - 
+  - PauseSignLayer
+  - Audio
   - 
   - 
   - 

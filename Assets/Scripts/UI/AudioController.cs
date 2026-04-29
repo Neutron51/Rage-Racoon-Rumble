@@ -8,21 +8,55 @@ public class AudioController : MonoBehaviour {
     // tutorial: https://www.youtube.com/watch?v=G-JUp8AMEx0
 
     [SerializeField] public AudioMixer audioMixer;
-    [SerializeField] private Slider mainSlider;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider sfxSlider;
+    [SerializeField] public Slider mainSlider;
+    [SerializeField] public Slider musicSlider;
+    [SerializeField] public Slider sfxSlider;
+
+    private static AudioController audioInstance;
+    private bool IsLoaded = false;
 
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
-    }
 
-    private void Start() {
+        if (audioInstance == null) {
+            audioInstance = this;
+        }
+        else {
+            UnityEngine.Object.Destroy(gameObject);
+        }
+    }   
+
+    void Start() {
+        if (IsLoaded == false) {
         if (PlayerPrefs.HasKey("MusicVolume")) {
             LoadVolume();
         }
         else {
             SetMusicVolume();
         }
+        IsLoaded = true;
+      }
+        else {
+           return; 
+        }
+
+        /* mainSlider.onValueChanged.AddListener (delegate {SetMainVolume();});
+        musicSlider.onValueChanged.AddListener (delegate {SetMusicVolume();});
+        sfxSlider.onValueChanged.AddListener (delegate {SetSfxVolume();}); */
+    }
+
+    public void FindNewSliders() {
+        if (mainSlider == null) mainSlider = GameObject.Find("MainSlider").GetComponent<Slider>();
+        if (musicSlider == null) musicSlider = GameObject.Find("MusicSlider").GetComponent<Slider>();
+        if (sfxSlider == null) sfxSlider = GameObject.Find("SfxSlider").GetComponent<Slider>();
+
+        // ADD LISTENERS
+
+        mainSlider.onValueChanged.AddListener (delegate {SetMainVolume();});
+        musicSlider.onValueChanged.AddListener (delegate {SetMusicVolume();});
+        sfxSlider.onValueChanged.AddListener (delegate {SetSfxVolume();});
+
+        Debug.Log("Finding new Sliders!");
     }
 
     public void SetMainVolume() {
