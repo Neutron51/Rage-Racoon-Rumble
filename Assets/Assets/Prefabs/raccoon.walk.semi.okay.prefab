@@ -25,16 +25,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800735287561128169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.00487, y: -0.00374, z: 0.00116}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.00000008940697, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.17181323, y: 0.48369187, z: 0.37009817}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 916472050586302930}
   - {fileID: 3111185807697236999}
   - {fileID: 8056461224769117245}
   - {fileID: 3328342745072064670}
-  m_Father: {fileID: 9090535014109880013}
+  m_Father: {fileID: 3763415205774037043}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &5781461031254838787
 MonoBehaviour:
@@ -506,7 +506,6 @@ MonoBehaviour:
   allowButtonHold: 1
   text: {fileID: 0}
   ShootSFX: {fileID: 8300000, guid: d3730997d6d1d456b9ccb46c21c5b41a, type: 3}
-  EmptySFX: {fileID: 0}
   ReloadSFX: {fileID: 0}
 --- !u!4 &916472050586302930 stripped
 Transform:
@@ -657,7 +656,6 @@ MonoBehaviour:
   allowButtonHold: 1
   text: {fileID: 0}
   ShootSFX: {fileID: 8300000, guid: 7f3a7bc6ea8ec4fb7902f1df02899409, type: 3}
-  EmptySFX: {fileID: 8300000, guid: c79b74ad851d54b32b81d90069173496, type: 3}
   ReloadSFX: {fileID: 8300000, guid: d3bb889a12fa94716963c08cce345345, type: 3}
 --- !u!4 &3111185807697236999 stripped
 Transform:
@@ -766,7 +764,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6352361308790617052}
-    - targetCorrespondingSourceObject: {fileID: 5591498366653524245, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 996616676391679956}
     m_AddedComponents:
@@ -1137,11 +1135,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!4 &9090535014109880013 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5591498366653524245, guid: 6425735064f1a489eb0dc12b1257f8e0, type: 3}
-  m_PrefabInstance: {fileID: 3724740009262741464}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7513400223074302934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1288,8 +1281,6 @@ MonoBehaviour:
   animator: {fileID: 5272454558187642103}
   text: {fileID: 0}
   ShootSFX: {fileID: 8300000, guid: 7f3a7bc6ea8ec4fb7902f1df02899409, type: 3}
-  EmptySFX: {fileID: 8300000, guid: c79b74ad851d54b32b81d90069173496, type: 3}
-  ReloadSFX: {fileID: 8300000, guid: d3bb889a12fa94716963c08cce345345, type: 3}
 --- !u!4 &8056461224769117245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91817dac65dfc4bde8bb353737470425, type: 3}
