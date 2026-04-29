@@ -23,16 +23,15 @@ public class Pistol : MonoBehaviour
 
     public TextMeshProUGUI text;
 
-    public AudioMixer myAudioMixer;
-    public AudioMixerGroup myAudioMixerGroup;
-    public AudioClip ShootSFX;
-    public AudioClip EmptySFX;
-    public AudioClip ReloadSFX;
+    public AudioSource ShootSFX;
+    //public AudioClip EmptySFX;
+    //public AudioClip ReloadSFX;
 
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        ShootSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,7 +56,7 @@ public class Pistol : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
-            AudioManager.Instance.PlaySFX(ReloadSFX, 0.25f);
+            //AudioManager.Instance.PlaySFX(ReloadSFX, 0.25f);
         }
 
         //Shoot
@@ -66,10 +65,10 @@ public class Pistol : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shooting();
             Debug.Log("Shooting");
-            if(bulletsLeft <= 0)
+            /*if(bulletsLeft <= 0)
             {
                 AudioManager.Instance.PlaySFX(EmptySFX, 1f);
-            }
+            }*/
         } 
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -115,7 +114,7 @@ public class Pistol : MonoBehaviour
 
         BulletDamage();
 
-        AudioManager.Instance.PlaySFX(ShootSFX, 0.20f);
+        ShootSFX.Play();
 
         bulletsLeft--;
         bulletsShot--;

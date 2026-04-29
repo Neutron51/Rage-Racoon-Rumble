@@ -3,7 +3,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UZIShoot : MonoBehaviour
+public class WaterGun : MonoBehaviour
 {
     [SerializeField]
     private TrailRenderer BulletTrail;
@@ -92,7 +92,7 @@ public class UZIShoot : MonoBehaviour
         readyToShoot = false;
 
         //RayCast
-        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.down), out RaycastHit rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.right), out RaycastHit rayHit, range, whatIsEnemy))
         {
             TrailRenderer trail = Instantiate(BulletTrail, shootingPos.position, Quaternion.identity);
 
@@ -155,7 +155,7 @@ public class UZIShoot : MonoBehaviour
 
     private void BulletDamage()
     {
-        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.down), out RaycastHit rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.right), out RaycastHit rayHit, range, whatIsEnemy))
         {
             if(rayHit.collider.CompareTag("Enemy"))
             {

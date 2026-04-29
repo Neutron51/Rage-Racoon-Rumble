@@ -176,7 +176,7 @@ public class EnemyController : MonoBehaviour {
                 rc.DecreaseEnemyCount();
 
                 // Add health to player
-                playerHealth.currentHealth = playerHealth.currentHealth += playerHealthAdd;
+                //playerHealth.currentHealth = playerHealth.currentHealth += playerHealthAdd;
             }
 
             Destroy(gameObject, 0.95f);
