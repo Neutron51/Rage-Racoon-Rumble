@@ -10,4 +10,8 @@ public class BasicClick : MonoBehaviour {
     private void OnMouseUpAsButton() {
         SceneManager.LoadScene($"{SceneName}");
     }
+
+    public void OpenScene(string sceneClickName) {
+        SceneManager.LoadScene($"{sceneClickName}");
+    }
 }

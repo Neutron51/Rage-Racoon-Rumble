@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour {
     [SerializeField] public PlayerHealth playerHealth;
     [SerializeField] public int playerHealthAdd;
     private bool Immunity;
+    public bool isBigTony;
     
 
     private void Start() {
@@ -124,9 +125,18 @@ public class EnemyController : MonoBehaviour {
         transform.LookAt(Player);
         anim.SetTrigger("Attacking");
 
-        playerHealth = Player.GetComponent<PlayerHealth>();
-        if (playerHealth != null) {
-            playerHealth.TakeDamage(damageDealt);
+        if (isBigTony == false) {
+            playerHealth = Player.GetComponent<PlayerHealth>();
+            if (playerHealth != null) {
+                playerHealth.TakeDamage(damageDealt);
+            }
+        }
+        
+
+        if (isBigTony == true) {
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
         }
         
         // moved Invoke out of the old if Attacked statement
@@ -175,13 +185,6 @@ public class EnemyController : MonoBehaviour {
 
     /* private void DestroyEnemy() {
         Destroy(gameObject);
-    } */
-
-    /* private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
     } */
 
     // ---- DEATH ---

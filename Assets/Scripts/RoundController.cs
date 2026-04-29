@@ -6,8 +6,9 @@ using TMPro;
     using UnityEditor.ShaderKeywordFilter;
     using UnityEngine;
     using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-    public class RoundController : MonoBehaviour {
+public class RoundController : MonoBehaviour {
 
         public enum SpawnState { spawning, waiting, counting };
         public SpawnState state = SpawnState.counting;
@@ -40,6 +41,13 @@ using TMPro;
 
         [Header("Spawn Locations")]
         [SerializeField] public GameObject[] spawnLoc;
+
+        [Header("GUI")]
+        [SerializeField] public Image EnemyIcons;
+        [SerializeField] private Sprite Rat;
+        [SerializeField] private Sprite Cat;
+        [SerializeField] private Sprite Pitbull;
+        [SerializeField] private Sprite BigTony;
 
 
         // ---- START A WAVE COUNTDOWN ONCE THE GAME STARTS ----
@@ -108,6 +116,23 @@ using TMPro;
             // Spawn
             Debug.Log($"using Prefab: {_wave.enemy}");
 
+            // Enemy Icon
+            if (nextWave == 0) {
+                EnemyIcons.sprite = Rat;
+            }
+            if (nextWave == 1) {
+                EnemyIcons.sprite = Cat;
+            }
+            if (nextWave == 2) {
+                EnemyIcons.sprite = Pitbull;
+            }
+            if (nextWave == 3) {
+                EnemyIcons.sprite = BigTony;
+            }
+            else {
+                Debug.Log("All Rounds Completed!");
+            }
+
             state = SpawnState.waiting; // we are waiting for the player to kill of all of the enemies
             yield break;
         }
@@ -115,7 +140,7 @@ using TMPro;
         // ---- UPDATE THE TEXT ----
 
         void UpdateTextGUI() {
-            enemyCountText.text = $"Enemies Left: {aliveEnemies}";
+            enemyCountText.text = $"{aliveEnemies}";
             roundCount.text = $"Round: {nextWave + 1}";
             timerText.text = $"{waveCountdown.ToString("0.00")} S"; 
         }

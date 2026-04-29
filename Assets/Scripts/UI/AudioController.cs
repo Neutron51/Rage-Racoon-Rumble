@@ -39,10 +39,6 @@ public class AudioController : MonoBehaviour {
         else {
            return; 
         }
-
-        /* mainSlider.onValueChanged.AddListener (delegate {SetMainVolume();});
-        musicSlider.onValueChanged.AddListener (delegate {SetMusicVolume();});
-        sfxSlider.onValueChanged.AddListener (delegate {SetSfxVolume();}); */
     }
 
     public void FindNewSliders() {
