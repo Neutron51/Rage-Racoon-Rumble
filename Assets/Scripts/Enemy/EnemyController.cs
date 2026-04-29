@@ -131,16 +131,25 @@ public class EnemyController : MonoBehaviour {
                 playerHealth.TakeDamage(damageDealt);
             }
         }
-        
 
         if (isBigTony == true) {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            Vector3 direction = (Player.position - transform.position).normalized;
+            Vector3 spawnPos = transform.position + transform.forward * 1.5f;
+
+            Rigidbody rb = Instantiate(projectile, spawnPos, Quaternion.LookRotation(direction)).GetComponent<Rigidbody>();
+            rb.AddForce(direction * 12f, ForceMode.Impulse);
+
+            // pass damage to missile
+            MissileDamage missile = rb.GetComponent<MissileDamage>();
+            missile.SetDamage(damageDealt);   
         }
         
         // moved Invoke out of the old if Attacked statement
         Invoke(nameof(ResetAttack), timeBetweenAttacks);
+    }
+
+    private void BigTonyBulletDamage(bool rbMissile) {
+        playerHealth.TakeDamage(damageDealt);
     }
 
     private void ResetAttack() {

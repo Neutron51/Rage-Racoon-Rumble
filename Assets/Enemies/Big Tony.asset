@@ -15,9 +15,9 @@ MonoBehaviour:
   speed: 1
   walkPointRange: 20
   sightRange: 20
-  attackRange: 1
+  attackRange: 6
   health: 100
   damageDealt: 12
   timeBetweenAttacks: 2
   playerHealthAdd: 100
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 651388219205490477, guid: 3ce1d149cba694300a0136434dcaaf15, type: 3}
