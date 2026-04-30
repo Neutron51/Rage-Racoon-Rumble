@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor.Animations;
 using UnityEngine.AI;
 using JetBrains.Annotations;
+using System;
 
 public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;
@@ -34,10 +35,13 @@ public class EnemyController : MonoBehaviour {
 
     [Header("Player")]
     [SerializeField] public PlayerHealth playerHealth;
+    [SerializeField] public int playerHealthAdd;
+    private bool Immunity;
     
 
     private void Start() {
-        // anim = GetComponent<Animator>(); // get animator at starts 
+        // anim = GetComponent<Animator>(); // get animator at starts
+        playerHealth = Player.GetComponent<PlayerHealth>();
     }
 
     private void Awake() {
@@ -51,7 +55,9 @@ public class EnemyController : MonoBehaviour {
             sightRange = enemyData.sightRange;
             attackRange = enemyData.attackRange;
             timeBetweenAttacks = enemyData.timeBetweenAttacks;
+            //playerHealthAdd = enemyData.playerHealthAdd;
 
+            damageDealt = enemyData.damageDealt;
             walkPointRange = enemyData.walkPointRange;
             projectile = enemyData.projectilePrefab;
         }
@@ -64,7 +70,7 @@ public class EnemyController : MonoBehaviour {
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (playerInAttackRange && !alreadyAttacked) AttackPlayer(damageDealt);
     }
     private void Patroling() {
         if (!walkPointSet) SearchWalkPoint();
@@ -81,8 +87,8 @@ public class EnemyController : MonoBehaviour {
 
     private void SearchWalkPoint() {
         // Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
@@ -94,26 +100,37 @@ public class EnemyController : MonoBehaviour {
         agent.SetDestination(Player.position);
     }
 
-    private void AttackPlayer() {
+     IEnumerator TimeBetweenAttacks() {
+        yield return new WaitForSeconds(timeBetweenAttacks);
+    }  
+
+    IEnumerator AttackLoop() {
+        while (true) {
+            if (!alreadyAttacked) {
+                AttackPlayer(damageDealt);
+                yield return new WaitForSeconds(timeBetweenAttacks);
+            }
+            else {
+                yield return null; // wait a frame if not attacking
+            }
+        }
+    } 
+
+    private void AttackPlayer(int damageDealt) {
+        alreadyAttacked = true;
+        
         // Make sure enemy doesn;t move
         agent.SetDestination(transform.position);
-
         transform.LookAt(Player);
-
         anim.SetTrigger("Attacking");
 
-        if (!alreadyAttacked) {
-            // Attack Code here
-            // Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-
-            /* rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse); */
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        playerHealth = Player.GetComponent<PlayerHealth>();
+        if (playerHealth != null) {
+            playerHealth.TakeDamage(damageDealt);
         }
-
-        playerHealth.TakeDamage(damageDealt);
+        
+        // moved Invoke out of the old if Attacked statement
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
     }
 
     private void ResetAttack() {
@@ -126,29 +143,46 @@ public class EnemyController : MonoBehaviour {
 
         anim.SetTrigger("Damaged");
 
-        if (health <= 0) {
+        if (Immunity == false) {
+            if (health <= 0) {
+            Immunity = true;
+            KillEnemy();
+           };
+        }
+        
+    }
+
+    public void KillEnemy() {
+        if (Immunity == true) {
             RoundController rc = FindFirstObjectByType<RoundController>();
 
             anim.SetBool("isDead", true);
 
+            // here is the problem
+            //   |
+            //   V
+
             if (rc != null) {
                 rc.DecreaseEnemyCount();
+
+                // Add health to player
+                //playerHealth.currentHealth = playerHealth.currentHealth += playerHealthAdd;
             }
 
             Destroy(gameObject, 0.95f);
-        };
+        }
     }
 
     /* private void DestroyEnemy() {
         Destroy(gameObject);
     } */
 
-    private void OnDrawGizmosSelected() {
+    /* private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
+    } */
 
     // ---- DEATH ---
 

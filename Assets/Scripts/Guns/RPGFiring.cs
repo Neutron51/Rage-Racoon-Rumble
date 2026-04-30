@@ -22,10 +22,13 @@ public class RPGFiring : MonoBehaviour
 
     public TextMeshProUGUI text;
 
+    public AudioSource ShootSFX;
+
     void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        ShootSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -71,13 +74,12 @@ public class RPGFiring : MonoBehaviour
         {
             targetPoint = hit.point;
         }
-        
         else
         {
             targetPoint = ray.GetPoint(75); // if it doesn't hit anything, set the target point to 75 units in front of the camera
         }
         
-        Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
+        Vector3 directionWithoutSpread = (targetPoint - attackPoint.position) * -1;
 
         //Instantiate the rocket
         GameObject currentRocket = Instantiate(rocketPrefab, attackPoint.position, Quaternion.identity);
@@ -86,7 +88,6 @@ public class RPGFiring : MonoBehaviour
 
         //Add forces to the rocket
         currentRocket.GetComponent<Rigidbody>().AddForce(directionWithoutSpread.normalized * shootForce, ForceMode.Impulse);
-        currentRocket.GetComponent<Rigidbody>().AddForce(fpsCam.transform.up * upwardForce, ForceMode.Impulse);
 
         bulletsLeft--;
         bulletsShot++;
@@ -110,6 +111,10 @@ public class RPGFiring : MonoBehaviour
             Invoke("ResetShot", timeBetweenShooting);
             allowInvoke = false;
         }
+
+        ShootSFX.Play();
+
+        Destroy(currentRocket, 3f);
     }
 
     private void ResetShot()
