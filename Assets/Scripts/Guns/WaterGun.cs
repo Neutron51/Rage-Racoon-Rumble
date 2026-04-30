@@ -92,7 +92,7 @@ public class WaterGun : MonoBehaviour
         readyToShoot = false;
 
         //RayCast
-        if(Physics.Raycast(shootingPos.position, (shootingPos.forward) * 2f, out RaycastHit rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, (shootingPos.right) * 1.5f, out RaycastHit rayHit, range, whatIsEnemy))
         {
             TrailRenderer trail = Instantiate(BulletTrail, shootingPos.position, Quaternion.identity);
 
