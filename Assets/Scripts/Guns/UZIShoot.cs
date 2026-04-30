@@ -31,8 +31,8 @@ public class UZIShoot : MonoBehaviour
     private void Awake()
     {
         bulletsLeft = magazineSize;
-        readyToShoot = true;
         ShootSFX = GetComponent<AudioSource>();
+        readyToShoot = true;
     }
 
     private void Update()
@@ -71,7 +71,6 @@ public class UZIShoot : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
-            //AudioManager.Instance.PlaySFX(ReloadSFX, 0.25f);
         }
 
         //Shoot
@@ -80,10 +79,6 @@ public class UZIShoot : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shoot();
             Debug.Log("Shooting!");
-            /*if(bulletsLeft <= 0)
-            {
-                AudioManager.Instance.PlaySFX(EmptySFX, 1f);
-            }*/
         } 
     }
 
@@ -103,8 +98,6 @@ public class UZIShoot : MonoBehaviour
                 rayHit.collider.GetComponent<Enemy>().Damage(damage);
             }*/
         }
-
-        //AudioManager.Instance.PlaySFX(ShootSFX, 0.20f);
 
         BulletDamage();
 

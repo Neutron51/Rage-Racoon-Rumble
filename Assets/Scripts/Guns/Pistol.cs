@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.Runtime.CompilerServices;
 using System.Collections;
-using UnityEngine.Audio;
 
 public class Pistol : MonoBehaviour
 {
@@ -24,14 +23,16 @@ public class Pistol : MonoBehaviour
     public TextMeshProUGUI text;
 
     public AudioSource ShootSFX;
-    //public AudioClip EmptySFX;
-    //public AudioClip ReloadSFX;
+    //public AudioSource EmptySFX;
+    public AudioSource ReloadSFX;
 
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
         ShootSFX = GetComponent<AudioSource>();
+        //EmptySFX = GetComponent<AudioSource>();
+        ReloadSFX = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -56,7 +57,6 @@ public class Pistol : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading  && this.gameObject.activeSelf)
         {
             Reload();
-            //AudioManager.Instance.PlaySFX(ReloadSFX, 0.25f);
         }
 
         //Shoot
@@ -65,10 +65,6 @@ public class Pistol : MonoBehaviour
             bulletsShot = bulletsPerTap;
             Shooting();
             Debug.Log("Shooting");
-            /*if(bulletsLeft <= 0)
-            {
-                AudioManager.Instance.PlaySFX(EmptySFX, 1f);
-            }*/
         } 
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -113,7 +109,7 @@ public class Pistol : MonoBehaviour
         }*/
 
         BulletDamage();
-
+        
         ShootSFX.Play();
 
         bulletsLeft--;
@@ -148,6 +144,7 @@ public class Pistol : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        ReloadSFX.Play();
         Invoke("ReloadFinished", reloadTime);
     }
 

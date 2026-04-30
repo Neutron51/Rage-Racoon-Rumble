@@ -2,23 +2,14 @@ using UnityEngine;
 
 public class Missiles : MonoBehaviour
 {
-    public float speed;
+    public GameObject rocketPrefab;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+        private void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Destroy(gameObject);
-        Debug.Log("Missile Destroy!!");
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyController>().TakenDamage(50);
+            Destroy(rocketPrefab);
+        }
     }
 }
