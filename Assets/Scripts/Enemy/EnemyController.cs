@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEditor.Animations;
 using UnityEngine.AI;
-using JetBrains.Annotations;
-using System;
 
 public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;

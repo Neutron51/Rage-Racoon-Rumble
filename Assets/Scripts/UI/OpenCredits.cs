@@ -1,7 +1,4 @@
-using System;
-using Unity.Collections;
 using UnityEditor.Animations;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class OpenCredits : MonoBehaviour {
