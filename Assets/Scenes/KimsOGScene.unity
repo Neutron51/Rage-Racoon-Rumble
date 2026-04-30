@@ -8130,6 +8130,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03178923, y: 0.016977342, z: 0.012311688}
   m_Center: {x: 0, y: 0, z: 0.0062713074}
+--- !u!1 &598138783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6575340507208010600, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
+  m_PrefabInstance: {fileID: 1982792455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &598873981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26117,15 +26122,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f810f4dbe74c74577855e5ca97039c30, type: 2}
-  m_sharedMaterial: {fileID: -5734128574404097722, guid: f810f4dbe74c74577855e5ca97039c30, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d17f284db5aa64ab2b68395e0b88c47c, type: 2}
+  m_sharedMaterial: {fileID: -5734128574404097722, guid: d17f284db5aa64ab2b68395e0b88c47c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -26937,6 +26942,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2010161454710566903, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1982792460}
+    - targetCorrespondingSourceObject: {fileID: 6575340507208010600, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1982792461}
   m_SourcePrefab: {fileID: 100100000, guid: 0e18e3a3ea8a24f6492c2ab45d1bc3e9, type: 3}
 --- !u!4 &1982792456 stripped
 Transform:
@@ -27076,6 +27084,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1982792461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598138783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09b5103842e145df960eb4a7711e285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecalclatingShootPos
+  shootRotation: {fileID: 1982792459}
+  playerRotation: {fileID: 1982792456}
 --- !u!65 &1985875141
 BoxCollider:
   m_ObjectHideFlags: 0
