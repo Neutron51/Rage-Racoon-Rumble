@@ -81,7 +81,7 @@ public class Pistol : MonoBehaviour
     {
         readyToShoot = false;
 
-        if(Physics.Raycast(FirePoint.position, transform.TransformDirection(Vector3.right), out RaycastHit hit, 100))
+        if(Physics.Raycast(FirePoint.position, (FirePoint.forward) * 2f, out RaycastHit hit, 100))
         {
             TrailRenderer trail = Instantiate(BulletTrail, FirePoint.position, Quaternion.identity);
 
