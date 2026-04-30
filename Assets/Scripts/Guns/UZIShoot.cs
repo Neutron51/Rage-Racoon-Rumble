@@ -87,7 +87,7 @@ public class UZIShoot : MonoBehaviour
         readyToShoot = false;
 
         //RayCast
-        if(Physics.Raycast(shootingPos.position, transform.TransformDirection(Vector3.down), out RaycastHit rayHit, range, whatIsEnemy))
+        if(Physics.Raycast(shootingPos.position, (shootingPos.forward) * 2f, out RaycastHit rayHit, range, whatIsEnemy))
         {
             TrailRenderer trail = Instantiate(BulletTrail, shootingPos.position, Quaternion.identity);
 
