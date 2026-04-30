@@ -81,6 +81,8 @@ public class RoundController : MonoBehaviour {
 
             // kill an enemy when you press the F key
 
+            #if UNITY_EDITOR
+
             if (Keyboard.current.fKey.wasPressedThisFrame && aliveEnemies > 0) {
                 EnemyController ec = enemyList[enemyList.Count - 1];
 
@@ -96,6 +98,8 @@ public class RoundController : MonoBehaviour {
                     Debug.Log("no enemies to kill!");
                 }   
             }
+
+            #endif
 
             // Update GUI text
 

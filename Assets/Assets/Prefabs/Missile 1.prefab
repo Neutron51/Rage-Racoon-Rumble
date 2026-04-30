@@ -154,3 +154,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missiles
   rocketPrefab: {fileID: 651388219205490477}
+  Damage: 40

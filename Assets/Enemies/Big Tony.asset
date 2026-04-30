@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c29cbd1cdf2f54cb5a980a4be0e9a9, type: 3}
   m_Name: Big Tony
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  speed: 5
+  speed: 6
   walkPointRange: 20
   sightRange: 20
   attackRange: 6
   health: 100
   damageDealt: 12
   timeBetweenAttacks: 2
-  playerHealthAdd: 100
+  playerHealthAdd: 200
   projectilePrefab: {fileID: 651388219205490477, guid: 3ce1d149cba694300a0136434dcaaf15, type: 3}
