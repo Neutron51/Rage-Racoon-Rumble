@@ -137,6 +137,8 @@ MonoBehaviour:
   animController: {fileID: 0}
   anim: {fileID: 5547722883022952453}
   playerHealth: {fileID: 0}
+  playerHealthAdd: 0
+  isBigTony: 0
 --- !u!1001 &8139806077403830850
 PrefabInstance:
   m_ObjectHideFlags: 0

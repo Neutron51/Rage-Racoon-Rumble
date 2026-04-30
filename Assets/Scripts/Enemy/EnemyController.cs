@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEditor.Animations;
+// using UnityEditor.Animations;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour {
     public bool playerInSightRange, playerInAttackRange;
 
     [Header("Animator")]
-    [SerializeField] private AnimatorController animController;
+    [SerializeField] private RuntimeAnimatorController animController;
     [SerializeField] private Animator anim;
 
     [Header("Player")]

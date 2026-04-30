@@ -1,4 +1,4 @@
-using UnityEditor.Animations;
+// using UnityEditor.Animations;
 using UnityEngine;
 
 public class OpenCredits : MonoBehaviour {
@@ -10,7 +10,7 @@ public class OpenCredits : MonoBehaviour {
     [SerializeField] public float CameraY;
     [SerializeField] private GameObject SodaCans;
 
-    [SerializeField] private AnimatorController animController;
+    [SerializeField] private RuntimeAnimatorController animController;
     private Animator anim;
 
     private bool Responsibility;

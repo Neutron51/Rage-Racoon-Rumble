@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c29cbd1cdf2f54cb5a980a4be0e9a9, type: 3}
   m_Name: Pitbull
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  speed: 75
+  speed: 45
   walkPointRange: 20
   sightRange: 20
   attackRange: 0.5

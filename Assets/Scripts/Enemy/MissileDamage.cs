@@ -6,7 +6,7 @@ public class MissileDamage : MonoBehaviour {
     private int damage;
 
     void Awake() {
-        Destroy(gameObject, 5f);    
+        Destroy(gameObject, 15f);    
     }
 
     public void SetDamage(int dmg) {

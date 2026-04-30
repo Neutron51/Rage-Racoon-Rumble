@@ -46,6 +46,12 @@ public class RoundController : MonoBehaviour {
         [SerializeField] private Sprite Pitbull;
         [SerializeField] private Sprite BigTony;
 
+        [Header("Guns")]
+        [SerializeField] private GameObject Watergun;
+        [SerializeField] private GameObject Pistol;
+        [SerializeField] private GameObject Uzi;
+        [SerializeField] private GameObject Rpg;
+
 
         // ---- START A WAVE COUNTDOWN ONCE THE GAME STARTS ----
 
@@ -53,6 +59,12 @@ public class RoundController : MonoBehaviour {
             waveCountdown = timeBetweenWaves;
 
             victoryScreen.SetActive(false);
+
+            Watergun.SetActive(true);
+            Pistol.SetActive(false);
+            Uzi.SetActive(false);
+            Rpg.SetActive(false);
+            
         }
 
 
@@ -119,12 +131,27 @@ public class RoundController : MonoBehaviour {
             }
             if (nextWave == 1) {
                 EnemyIcons.sprite = Cat;
+
+                Watergun.SetActive(false);
+                Pistol.SetActive(true);
+                Uzi.SetActive(false);
+                Rpg.SetActive(false);
             }
             if (nextWave == 2) {
                 EnemyIcons.sprite = Pitbull;
+
+                Watergun.SetActive(false);
+                Pistol.SetActive(false);
+                Uzi.SetActive(true);
+                Rpg.SetActive(false);
             }
             if (nextWave == 3) {
                 EnemyIcons.sprite = BigTony;
+
+                Watergun.SetActive(false);
+                Pistol.SetActive(false);
+                Uzi.SetActive(false);
+                Rpg.SetActive(true);
             }
             else {
                 Debug.Log("All Rounds Completed!");

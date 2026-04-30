@@ -1,4 +1,4 @@
-using UnityEditor.Animations;
+// using UnityEditor.Animations;
 using UnityEngine;
 
 public class OpenOptions : MonoBehaviour {
@@ -9,7 +9,7 @@ public class OpenOptions : MonoBehaviour {
     [SerializeField] public float CameraX;
     [SerializeField] public float CameraY;
 
-    [SerializeField] private AnimatorController animController;
+    [SerializeField] private RuntimeAnimatorController animController;
     private Animator anim;
 
     private bool Responsibility;
