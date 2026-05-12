@@ -16,7 +16,7 @@ MonoBehaviour:
   walkPointRange: 20
   sightRange: 20
   attackRange: 0.5
-  health: 45
+  health: 30
   damageDealt: 6
   timeBetweenAttacks: 2
   playerHealthAdd: 15
